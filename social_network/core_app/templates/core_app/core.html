@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block sidebar %}
+    {{ block.super }}
+    <div class="requests">
+        <div class="inquiry">
+            <span>
+                <img src="{% static 'icons/requests.svg' %}" alt="">
+                <p>Запити</p>
+            </span>
+            <p>Дивитись всі</p>
+        </div>
+        <div class="follower">
+            <div class="info">
+                <div>
+                    <img class="avatar-follower" src="" alt="">
+                    <span class="info-follower">
+                        <p>Yehor Aung</p>
+                        <p>4.3к підписників</p>
+                    </span>
+                </div>
+                
+                <div>
+                    <img class="avatar-follower" src="" alt="">
+                    <span class="info-follower">
+                        <p>Ann Ann</p>
+                        <p>1.6к підписників</p>
+                    </span>
+                </div>
+                <div>
+                    <img class="avatar-follower" src="" alt="">
+                    <span class="info-follower">
+                        <p>Yeugen Jenua</p>
+                        <p>10.3к підписників</p>
+                    </span>
+                </div>                        
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <p>Это страница</p>
+{% endblock %}
