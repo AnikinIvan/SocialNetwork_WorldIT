@@ -12,7 +12,7 @@
             <p>Дивитись всі</p>
         </div>
         <div class="follower">
-            <div class="info">
+            <div class="info-follower">
                 <div>
                     <img class="avatar-follower" src="" alt="">
                     <span class="info-follower">
@@ -37,7 +37,49 @@
                 </div>                        
             </div>
         </div>
-    </div>
+
+    <div class="message-pepol">
+        <div class="message">
+            <div>
+                <span>
+                    <img src="{% static 'icons/chat.svg' %}" alt="">
+                    <p>Повідомлення</p>
+                </span>
+                <p>Дивитись всі</p>
+            </div>
+        </div>
+            
+        <div class="message-user">
+            <div class="user-message">
+                <div>
+                    <img class="avatar-friends" src="" alt="">
+                    <span class="message-friends">
+                        <p>Mona Lisa</p>
+                        <p>Привіт! Як справи ?</p>
+                        <p>09:41</p>
+                    </span>
+                </div>
+                <div>
+                    <img class="avatar-friends" src="" alt="">
+                    <span class="message-friends">
+                        <p>Ann Ti</p>
+                        <p>Привіт!</p>
+                        <p>25.04.2025</p>
+                    </span>
+                 </div>
+        
+                     <div>
+                        <img class="avatar-friends" src="" alt="">
+                        <span class="message-friends">
+                            <p>Ness Ty</p>
+                            <p>Привіт!</p>
+                            <p>25.04.2025</p>
+                        </span>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>     
 {% endblock %}
 
 {% block content %}

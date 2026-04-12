@@ -1,10 +1,14 @@
 {% extends "base.html" %}
 {% load static %}
+{% block links %}
+    <link rel="stylesheet" href="{% static 'settings_app/css/settings.css' %}">
+
+{% endblock %}
 
 {% block sidebar %}
 <nav>
-    <a href="">Особиста інформація</a>
-    <a href="">Альбоми</a>
+    <a href="" class="personal-information">Особиста інформація</a>
+    <a href="" class="album">Альбоми</a>
 </nav>
 {% endblock %}
 

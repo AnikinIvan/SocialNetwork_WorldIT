@@ -9,12 +9,14 @@
 </head>
 <body>
     <header>
-        <img class = "logo" src="{% static 'icons/logo.svg' %}" alt="">
+        <div class = "logo">
+            <img src="{% static 'icons/logo.svg' %}" alt="">
+        </div>
         <nav class = "header-nav">
             <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home'%}active{% endif %}"><img src="{% static 'icons/House.svg' %}" alt="">Головна</a>
             <a href="{% url 'publications' %}" class="{% if request.resolver_match.url_name == 'publications'%}active{% endif %}"><img src="{% static 'icons/painting.svg' %}" alt="">Мої публікації</a>
             <a href="{% url 'friends' %}" class="{% if request.resolver_match.url_name == 'friends'%}active{% endif %}"><img src="{% static 'icons/friends.svg' %}" alt="">Друзі</a>
-            <a href="{% url 'chats' %}" class="{% if request.resolver_match.url_name == 'chats'%}active{% endif %}"><img src="{% static 'icons/chat.svg' %}" alt="">Чати</a>
+            <a href="" class=""><img src="{% static 'icons/chat.svg' %}" alt="">Чати</a>
             <a href="{% url 'settings' %}" class="{% if request.resolver_match.url_name == 'settings'%}active{% endif %}"><img src="{% static 'icons/settings.svg' %}" alt="">Налаштування</a>
             <button class = "logout"><img src="{% static 'icons/leave.svg' %}" alt="">Вихід</button>
         </nav>
@@ -23,9 +25,16 @@
         <div class = "sidebar">
             {% block sidebar %}
                 <div class="profile">
-                    <img class="avatar-user" src="{% static 'icons/avatar.jpg' %}" alt=""> 
-                    <h2 class="name-user">Lina Li</h2>
-                    <p class="teg-user">@thelili</p>
+                    <div class="info-user">
+                        <div class="avatar-user">
+                            <img  src="{% static 'icons/avatar.jpg' %}" alt=""> 
+                            <div class="online"></div>
+                        </div>
+                        <div class = "users">
+                            <h2 class="name-user">Lina Li</h2>
+                            <p class="tag-user">@thelili</p>
+                        </div>
+                    </div>
                     <div class="info">
                         <div class="posts">
                             <h2>566</h2>

@@ -1,0 +1,18 @@
+nav a{
+    text-decoration: none;
+    color: #070A1C;
+    display: inline-flex;
+    align-items: center;
+    font-size: 1rem;
+    font-family: var(--fontMedium);
+    padding:0.75vh 1.25vh;
+    border-radius:0.5vw;
+}
+
+.personal-information{
+    color: black;
+}
+
+.album{
+    color: #81818D;
+}

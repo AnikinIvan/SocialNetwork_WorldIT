@@ -1,5 +1,5 @@
 from django.views.generic.base import TemplateView
 # Create your views here.
 
-class ChatAppView(TemplateView):
-    template_name = "chats_app/chats.html"
+class UserAppView(TemplateView):
+    template_name = "user_app/user.html"
