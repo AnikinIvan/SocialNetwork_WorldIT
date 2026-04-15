@@ -1,13 +1,16 @@
 {% extends "base.html" %}
 {% load static %}
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/friends.css' %}">
+{% endblock %}
 
 {% block sidebar %}
-<nav>
-    <a href="#">Головна</a>
-    <a href="#">Запити</a>
-    <a href="#">Рекомендації</a>
-    <a href="#">Всі друзі</a>
-</nav>
+    <nav>
+        <a href="#" class = "global">Головна</a>
+        <a href="#">Запити</a>
+        <a href="#">Рекомендації</a>
+        <a href="#">Всі друзі</a>
+    </nav>
 {% endblock %}
 
 {% block content %}

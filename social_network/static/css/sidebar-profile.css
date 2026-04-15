@@ -1,0 +1,86 @@
+.profile{
+    background-color: #ffffff;
+    height:37.64vh;
+    width:100%;
+    border-radius: 1vh; 
+    border: solid 0.093vh rgba(205, 206, 210, 1);
+    display:flex;
+    padding:2.22vh 0; 
+    gap:2.22vh; 
+    flex-direction: column;
+}
+
+.info-user{
+    display:flex;
+    gap:3.6vh;
+    flex-direction:column;
+    align-items:center;
+}
+
+.avatar-user{
+    position:relative;
+    border-radius:50%; 
+    width:13.33vh;
+    height:13.33vh;  
+}
+.avatar-user img{
+    position:absolute;
+    border-radius:50%; 
+    height:100%;
+    width:100%;
+    object-fit: cover;
+}
+
+.users{
+    display:flex;
+    gap:1.6vh;
+    flex-direction:column;
+    align-items:center;
+}
+
+.info{
+    display:flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+}
+
+.posts, .readers, .friends{
+    display:flex;
+    width: 2.5vw;
+    padding: 1vh 1.75vw;
+    align-items:center;
+    flex-direction:column;
+    gap:0.97vh;
+    height:6.67vh;
+}
+
+.info-user{
+    color: rgba(7, 10, 28, 1);
+}
+
+.name-user{
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-style: bold;
+}
+
+.info p{
+    color:#81818D;
+}
+
+.readers{
+    border-left: solid 0.25vh rgba(205, 206, 210, 1);
+    border-right: solid 0.25vh rgba(205, 206, 210, 1);
+    padding: 1vh 2.4vw;
+}
+
+.online{
+    border:solid 0.4vh #FFFFFF;
+    position:relative;
+    left:9.72vh;
+    top:9.72vh;
+    background-color:#22C55E;
+    height:2.5vh;
+    width:2.5vh;
+    border-radius:50%;
+}
