@@ -1,5 +1,37 @@
-from django.views.generic.base import TemplateView
+from django.shortcuts import render
+from django.views.generic import TemplateView, FormView
+from .forms import *
 # Create your views here.
+class AuthTemplateView(TemplateView):
+    template_name = 'user_app/auth.html'
+    
+    def get_context_data(self, **kwargs) -> dict:
+        context = super().get_context_data(**kwargs)
+        context["form_register"] = UserRegisterForm()
+        context["form_login"] = UserAutrForm()
+        context["form_confirm"] = UserConfirmPasswordForm()
+        return context
 
-class UserAppView(TemplateView):
-    template_name = "user_app/user.html"
+class RegisterForm(FormView):
+    form_class = UserRegisterForm
+    template_name = 'user_app/auth.html'
+    def form_valid(self, form):
+        email = form.cleaned_data.get('email')
+        password = form.cleaned_data.get('password')
+        confirm_password = form.cleaned_data.get('confirm_password')
+        return super().form_valid(form)
+    
+class AuthForm(FormView):
+    form_class = UserAutrForm
+    template_name = 'user_app/auth.html'
+    def form_valid(self, form):
+        email = form.cleaned_data.get('email')
+        password = form.cleaned_data.get('password')
+        return super().form_valid(form)
+    
+class ConfirmPasswordForm(FormView):
+    form_class = UserConfirmPasswordForm
+    template_name = 'user_app/auth.html'
+    def form_valid(self, form):
+        confirm_password = form.cleaned_data.get('confirm_password')
+        return super().form_valid(form)
