@@ -1,19 +1,3 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
-}
-
-body{
-    width:100%;
-    height:100%;
-    background-color: #faf8ff;
-}
-
-html{
-    font-size: 16px;
-}
-
 @font-face {
     font-family: "links";
     src: url("../fonts/GTWalsheimPro-Medium.ttf");
@@ -24,6 +8,20 @@ html{
     --colorTextDefault: #070A1C;
 }
 
+*{
+    margin:0;
+    padding:0;
+}
+
+body{
+    overflow-x: hidden;
+    background-color: #faf8ff;
+}
+
+html{
+    font-size: 16px;
+}
+
 p, h2 {
     font-family: var(--fontMedium);
 }
@@ -31,31 +29,55 @@ p, h2 {
 header{
     background-color: #ffffff;
     display:flex;
-    padding: 2.75vh 4.15vw;
-    width: 100%;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
     margin: 0 auto;
+    height: 5.5rem;
 }
 
-.header-nav {
+main, header nav{
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+main{
     display:flex;
-    gap: 2.5vw;    
-}
-
-.logo{
-    width:11.563vw;
-    height:2.03vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 0.35rem;
+    margin-top:3.2vh;
+    height: 100vh
 }
 
 header nav{
     display:flex;
-    justify-content:center;
-    gap:28.12vw;
+    justify-content: space-between;
     align-items:center;
+    height: 2.5rem;
 }
 
-.logo img{
-    width:100%;
-    height:100%;
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    /* background-color:red; */
+    width: 24.31vw;
+}
+
+.content{
+    display: flex;
+    /* background-color:green; */
+    height: 100vh;
+    width: 64vw;
+}
+
+.header-nav {
+    display:flex;
+    align-items: center;
+    gap: 1.5rem;    
 }
 
 .header-nav a{
@@ -65,8 +87,9 @@ header nav{
     align-items: center;
     font-size: 1rem;
     font-family: var(--fontMedium);
-    padding:0.75vh 1.25vh;
-    border-radius:0.5vw;
+    border-radius:0.18rem;
+    padding: 0.25rem 0.5rem;
+    height: 1.75rem;
 }
 
 .header-nav a:hover{
@@ -74,9 +97,8 @@ header nav{
 }
 
 .header-nav a img{
-    width: 3vh;
-    height: 3vh;
-    margin-right: 0.5vh;
+    height: auto;
+    margin-right: 0.5rem;
 }
 
 .header-nav a.active{
@@ -84,11 +106,9 @@ header nav{
 }
 
 .logout{
-    width:7.42vw;
-    height:5.5vh;
+    height:2.5rem !important;
     cursor: pointer;
-    margin:0;
-    padding:0;
+    padding:0 !important;
 }
 
 .header-nav .logout img{
@@ -100,36 +120,12 @@ header nav{
     background-color:transparent;
 }
 
-main{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    gap:0.5vw;
-    min-height:100vh;
-    margin-top:3.2vh;
-    
+.logo{
+    height: 1.125rem;
+    width: auto;
 }
 
-.sidebar{
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    /* background-color:red; */
-    width: clamp(180px, 24vw, 360px);
-}
-
-.content{
-    position: relative;
-   /* background-color:green; */
-    display: flex;
-    box-sizing: border-box;
-    height:100vh;
-    max-width: 64vw;
-    min-width: 6vw;
-    width: 100%;
-}
-
-a:active{
-    color:grey !important;
+.logo img{
+    width:100%;
+    height:100%;
 }

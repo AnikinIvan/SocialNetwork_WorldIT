@@ -17,12 +17,15 @@
             {% include 'user_app/particles/form_confirm_email.html' %}
         </div>
         <div>
-
-            <img src="" alt="">
+            <img src="{% static 'user_app/icon/laptop.png' %}" alt="">
         </div>
     </div>
 {% endblock %}
 
+{% block sidebar %}{% endblock %}
+
 {% block scripts %}
     <script src="{% static 'user_app/js/auth.js' %}"></script>
+    <script src="{% static 'user_app/js/auth_pages.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 {% endblock %}

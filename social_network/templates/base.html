@@ -15,11 +15,11 @@
             <a href="" class = "logo">
                 <img src="{% static 'icons/logo.svg' %}" alt="">
             </a>
-            {% if request.path != '/auth' %}
+            {% if request.path != '/auth/' %}
                 <div class = "header-nav">
                     <a href="{% url 'home' %}" class=""><img src="{% static 'icons/House.svg' %}" alt="">Головна</a>
                     <a href="{% url 'publications' %}" class=""><img src="{% static 'icons/painting.svg' %}" alt="">Мої публікації</a>
-                    <a href="{% url 'friends' %}" class=""><img src="{% static 'icons/friends.svg' %}" alt="">Друзі</a>
+                    <a href="{% url 'friends' %}" class=""><img src="{% static 'icons/people.svg' %}" alt="">Друзі</a>
                     <a href="chats" class=""><img src="{% static 'icons/chat.svg' %}" alt="">Чати</a>
                     <a href="{% url 'settings' %}" class=""><img src="{% static 'icons/settings.svg' %}" alt="">Налаштування</a>
                     <a href="logout" class = "logout"><img src="{% static 'icons/leave.svg' %}" alt=""></a>
