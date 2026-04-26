@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block links %}
+    <link rel="stylesheet" href="{% static 'user_app/css/auth.css' %}">
+{% endblock %}
+
 {% block meta %}
     <meta name="csrf-token" content="{{ csrf_token }}">
 {% endblock %}
@@ -10,14 +14,14 @@
 {% endblock %}
 
 {% block content %}
-    <div>
-        <div>
+    <div class = "forms">
+        <div class = "form-container">
             {% include 'user_app/particles/form_register.html' %}
             {% include 'user_app/particles/form_login.html' %}
             {% include 'user_app/particles/form_confirm_email.html' %}
         </div>
-        <div>
-            <img src="{% static 'user_app/icon/laptop.png' %}" alt="">
+        <div class = "laptop-image-container">
+            <img class = "laptop-image" src="{% static 'user_app/icon/laptop.png' %}" alt="">
         </div>
     </div>
 {% endblock %}

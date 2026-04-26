@@ -1,18 +1,19 @@
 .profile{
     background-color: #ffffff;
-    height:37.64vh;
     width:100%;
-    border-radius: 1vh; 
-    border: solid 0.093vh rgba(205, 206, 210, 1);
+    height: auto;
+    border-radius: 0.625rem; 
+    border: solid 1px rgba(205, 206, 210, 1);
     display:flex;
-    padding:2.22vh 0; 
-    gap:2.22vh; 
+    padding: 0.5rem; 
+    gap: 1rem; 
     flex-direction: column;
+    box-sizing: border-box;
 }
 
 .info-user{
     display:flex;
-    gap:3.6vh;
+    gap: 1.5rem;
     flex-direction:column;
     align-items:center;
 }
@@ -20,9 +21,10 @@
 .avatar-user{
     position:relative;
     border-radius:50%; 
-    width:13.33vh;
-    height:13.33vh;  
+    width: 6rem;
+    height: 6rem;  
 }
+
 .avatar-user img{
     position:absolute;
     border-radius:50%; 
@@ -33,7 +35,7 @@
 
 .users{
     display:flex;
-    gap:1.6vh;
+    gap: 0.625rem;
     flex-direction:column;
     align-items:center;
 }
@@ -42,16 +44,17 @@
     display:flex;
     flex-direction: row;
     justify-content:space-evenly;
+    gap: 1rem;
 }
 
 .posts, .readers, .friends{
     display:flex;
-    width: 2.5vw;
-    padding: 1vh 1.75vw;
+    width: 7.31rem;
     align-items:center;
     flex-direction:column;
-    gap:0.97vh;
-    height:6.67vh;
+    gap: 0.43rem;
+    min-height: 3rem;
+    height: auto;
 }
 
 .info-user{
@@ -66,21 +69,27 @@
 
 .info p{
     color:#81818D;
+    font-size: 1rem;
 }
 
 .readers{
-    border-left: solid 0.25vh rgba(205, 206, 210, 1);
-    border-right: solid 0.25vh rgba(205, 206, 210, 1);
-    padding: 1vh 2.4vw;
+    border-left: solid 1px rgba(205, 206, 210, 1);
+    border-right: solid 1px rgba(205, 206, 210, 1);
 }
 
-.online{
-    border:solid 0.4vh #FFFFFF;
-    position:relative;
-    left:9.72vh;
-    top:9.72vh;
-    background-color:#22C55E;
-    height:2.5vh;
-    width:2.5vh;
-    border-radius:50%;
+.user-avatar {
+    position: relative;
+}
+
+.status-user{
+    position: absolute;
+    width: 1.125rem;
+    height: 1.125rem;
+    left: 4.375rem;
+    top: 4.375rem;
+}
+
+.status-user img {
+    width: 100%;
+    height: 100%;
 }

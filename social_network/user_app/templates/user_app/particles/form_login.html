@@ -1,11 +1,14 @@
+{% load static %}
 <div class="form-login" id="form_login">
     <div>
         <span id="link-register">Реєстрація</span>
         <span id="link-login">Авторизація</span>
     </div>
-    <p>Раді тебе знову бачити!</p>
-    <form action="{% url 'login' %}" method="post">
+    <p class = "title-welcome">Раді тебе знову бачити!</p>
+    <form action="{ url 'login' }" method="post">
         {{ form_login.as_p }}
-        <button type="submit">Увійти</button>
+        <button type="submit">
+            <img src="{% static 'user_app/icon/authorize.svg' %}" alt="">
+        </button>
     </form>
 </div>

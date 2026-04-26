@@ -2,13 +2,12 @@
     display:flex;  
     background-color:#FFFFFF;
     width:100%;
-    height:34.58vh;
-    gap:1.875vh;
+    height: fit-content;
+    gap: 1.5rem;
     border-radius: 1vh; 
     flex-direction:column;
-    padding: 1.25vw 2.22vh;
+    padding: 1rem;
     box-sizing: border-box;
-    margin-top:1.11vh;
     border:0.2vh solid #CDCED2;
 }
 
@@ -18,14 +17,14 @@
     flex-direction:row;
     align-items:center;
     justify-content:space-between;
-    width: 22vw;
-    height:3.19vh; 
+    width: 19.92rem;
+    height: 1.437rem; 
 }
 
 .inquiry span{
     display:flex;
     align-items:center;
-    gap:0.625vw;
+    gap:0.5rem;
     flex-direction:row;
 } 
 .followers{
@@ -34,8 +33,8 @@
 }
 .follower div{
     border-radius:50%;
-    width:6.3vh; 
-    height:6.3vh;
+    width: 2.875rem; 
+    height:2.875rem;
 }
 .follower div img{
     width:100%;
@@ -46,7 +45,7 @@
 .info-followers .follower{
     display:flex;
     flex-direction: row;
-    gap:1.25vw;
+    gap: 1rem;
 }
 .follower .info-follower{
     display:flex;
@@ -55,56 +54,62 @@
 .info-followers{
     display:flex;
     flex-direction:column;
-    gap:2.22vh;
+    gap: 1rem;
 }
+
 .follower-followers{
     color:#81818D;
 }
+
 .avatar-friends{
-    width:10vh;
-    height:10vh;
+    width: 2.875rem;
+    height: 2.875rem;
+    border-radius: 4.805rem;
+} 
+.avatar-friends img {
+    width: auto;
+    height: 100%;
     object-fit:cover;
-    border-radius:50%;
+    border-radius: 4.805rem;
 }
+
 .message-people{
     background-color:white;
     display:flex;
     width:100%;
-    height:36.8vh;
+    height: fit-content;
     border-radius: 1vh; 
     flex-direction:column;
-    padding: 1.25vw 2.22vh;
+    padding: 1rem;
     box-sizing: border-box;
-    margin-top:1.11vh;
     border:0.2vh solid #CDCED2;
-    gap:3.33vh;
+    gap: 1.5rem;
 }   
+
 .messages{
     color:#81818D;
     display:flex;
     flex-direction:row;
     justify-content:space-between;
-    width:22vw;
-    height:3.19vh; 
+    width: 100%;
+    height: 1.4375rem; 
 }
+
 .messages span{
     display:flex;
     align-items:center;
-    gap:0.625vw;
+    gap:0.5rem;
     flex-direction:row;
 } 
-.avatar-friends{
-    width:2.875rem !important;
-    height:2.875rem !important; 
-    object-fit:cover;
-    border-radius:50%;
-}
+
 .user-message{
     display:flex;
     flex-direction:column;
-    gap:2.22vh;
+    gap: 1rem;
+    height: fit-content;
 }
-.user-message img{
+
+.avatar-friends img{
     width:100%;
     height:100%;
     object-fit: cover;
@@ -113,18 +118,19 @@
 .message{
     display:flex;
     flex-direction:row;
-    gap:2.22vh;
+    gap: 1rem;
     width:100%;
 }
 .message-friends{     
     display:flex;
     justify-content:space-between;
-    width:20.31vw;
+    width:16.3rem;
 }
 
 .nickname-message{
-    gap:0.55vh;
+    gap:0.25rem;
 }
+
 .time{
     color:#81818D;
     font-size:0.875rem;

@@ -22,7 +22,7 @@
                     <a href="{% url 'friends' %}" class=""><img src="{% static 'icons/people.svg' %}" alt="">Друзі</a>
                     <a href="chats" class=""><img src="{% static 'icons/chat.svg' %}" alt="">Чати</a>
                     <a href="{% url 'settings' %}" class=""><img src="{% static 'icons/settings.svg' %}" alt="">Налаштування</a>
-                    <a href="logout" class = "logout"><img src="{% static 'icons/leave.svg' %}" alt=""></a>
+                    <a href="{% url 'auth' %}" class = "auth"><img src="{% static 'icons/leave.svg' %}" alt=""></a>
                 </div>
             {% endif %}
         </nav>
@@ -32,9 +32,13 @@
             {% block sidebar %}
                 <div class="profile">
                     <div class="info-user">
-                        <div class="avatar-user">
-                            <img  src="{% static 'icons/avatar.jpg' %}" alt=""> 
-                            <div class="online"></div>
+                        <div class="user-avatar"> 
+                            <div class="avatar-user">
+                                <img  src="{% static 'icons/avatar.jpg' %}" alt=""> 
+                            </div>
+                            <div class="status-user">
+                                <img src="{% static 'icons/online-status-green.png' %}" alt="">
+                            </div>
                         </div>
                         <div class = "users">
                             <h2 class="name-user">Lina Li</h2>
