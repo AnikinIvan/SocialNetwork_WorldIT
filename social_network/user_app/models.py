@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+import secrets
 # Create your models here.
 class User(AbstractUser):
     username = models.CharField(
@@ -11,5 +12,14 @@ class User(AbstractUser):
         unique= True
         
     )
+    email_confirmed = models.BooleanField(default=False)
+    confirmed_code = models.CharField(max_length=6, blank=True, null=True)
+
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
+
+    def generate_code(self):
+        code = ''.join([str(secrets.randbelow(10)) for _ in range(6)])
+        self.confirmed_code = code
+        self.save()
+        return code

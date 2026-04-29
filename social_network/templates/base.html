@@ -12,7 +12,7 @@
 <body>
     <header>
         <nav>
-            <a href="" class = "logo">
+            <a href="{% url 'home' %}" class = "logo">
                 <img src="{% static 'icons/logo.svg' %}" alt="">
             </a>
             {% if request.path != '/auth/' %}
@@ -22,7 +22,7 @@
                     <a href="{% url 'friends' %}" class=""><img src="{% static 'icons/people.svg' %}" alt="">Друзі</a>
                     <a href="chats" class=""><img src="{% static 'icons/chat.svg' %}" alt="">Чати</a>
                     <a href="{% url 'settings' %}" class=""><img src="{% static 'icons/settings.svg' %}" alt="">Налаштування</a>
-                    <a href="{% url 'auth' %}" class = "auth"><img src="{% static 'icons/leave.svg' %}" alt=""></a>
+                    <a href="{% url 'auth' %}" class = "logout"><img src="{% static 'icons/leave.svg' %}" alt=""></a>
                 </div>
             {% endif %}
         </nav>
@@ -30,31 +30,31 @@
     <main>
         <div class = "sidebar">
             {% block sidebar %}
-                <div class="profile">
-                    <div class="info-user">
-                        <div class="user-avatar"> 
-                            <div class="avatar-user">
+                <div class="sidebar-profile" onclick="location.href='{% url 'publications' %}'">
+                    <div class="user-info">
+                        <div class="avatar-container"> 
+                            <div class="avatar-image">
                                 <img  src="{% static 'icons/avatar.jpg' %}" alt=""> 
                             </div>
-                            <div class="status-user">
+                            <div class="status-indicator">
                                 <img src="{% static 'icons/online-status-green.png' %}" alt="">
                             </div>
                         </div>
-                        <div class = "users">
-                            <h2 class="name-user">Lina Li</h2>
-                            <p class="tag-user">@thelili</p>
+                        <div class = "user-details">
+                            <h2 class="user-name">Lina Li</h2>
+                            <p class="user-handle">@thelili</p>
                         </div>
                     </div>
-                    <div class="info">
-                        <div class="posts">
+                    <div class="stats-section">
+                        <div class="posts-stat">
                             <h2>566</h2>
                             <p>Дописи</p>
                         </div>
-                        <div class="readers">
+                        <div class="readers-stat">
                             <h2>12.1K</h2>
                             <p>Читачі</p>
                         </div>
-                        <div class = "friends">
+                        <div class = "friends-stat" onclick="location.href='{% url 'friends' %}'">
                             <h2>222</h2>
                             <p>Друзі</p>
                         </div>

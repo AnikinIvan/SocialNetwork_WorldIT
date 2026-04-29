@@ -14,7 +14,8 @@
     --colorTextDefault: #070A1C;
 }
 
-*, *::before, *::after {
+
+*{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -25,15 +26,21 @@ html, body {
 }
 
 body{
+    margin: 0;
     overflow-x: hidden;
     background-color: #faf8ff;
 }
 
 html{
+     /*font-size: 12.75px; */
     font-size: 16px;
+    scroll-behavior: smooth;
 }
 
-p, h2 {
+
+
+p, h2, a {
+    text-decoration: none;
     font-family: var(--fontMedium); /* ( */
 }
 
@@ -57,45 +64,38 @@ header nav{
 }
 
 main {
-    display: grid;
-    grid-template-columns: minmax(22rem, 22rem) minmax(0, 1fr);
-    grid-auto-rows: auto;
-    gap: 0.5rem;
+    position: relative;
+    display: flex;
+    flex-direction: row; /* Сайдбар и Контент в одну линию */
+    justify-content: center; /* Центрирует всю связку по горизонтали */
+    align-items: start;
     max-width: 1440px;
     width: 100%;
     margin: 0 auto;
-    padding: 1rem;
+    padding: 0.5rem; /* Добавили отступ сверху (3rem) и по бокам */
+    gap: 1.5rem; /* Расстояние между сайдбаром и формой */
     background-color: #faf8ff;
-    align-items: start;
-    overflow: visible;
-    padding-bottom: 2rem;
+}
+
+.content {
+    display: flex;
+    justify-content: center; /* Центрирует форму ВНУТРИ бирюзового блока */
+    align-items: center; /* Центрирует форму по вертикали */
+    width: 77%;
+    height: 80vh; /* Высота блока (можешь подправить под себя) */
+    background-color: turquoise; /* Твой цвет */
 }
 
 .sidebar {
     display: flex;
     flex-direction: column;
     width: 22rem;
-    height: auto;
-    max-height: none;
+    height: fit-content;
     gap: 0.75rem;
     background-color: transparent;
-    overflow: visible;
 }
 
-.sidebar > * {
-    width: 100%;
-}
 
-.content{
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    width: 100%;
-    gap: 0.5rem;
-    overflow: visible;
-    align-self: start;
-    justify-self: stretch;
-}
 
 .header-nav {
     display:flex;
@@ -139,9 +139,10 @@ main {
     height:100%;
 }
 
-.header-nav .logout:hover{
+header .header-nav .logout:hover, .header-nav .logout:active{
     background-color:transparent;
 }
+
 
 .logo{
     height: 1.125rem;
@@ -151,4 +152,4 @@ main {
 .logo img{
     width:100%;
     height:100%;
-}
+} 

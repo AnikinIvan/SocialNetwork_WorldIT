@@ -1,4 +1,4 @@
-.profile{
+.sidebar-profile{
     background-color: #ffffff;
     width:100%;
     height: auto;
@@ -11,21 +11,21 @@
     box-sizing: border-box;
 }
 
-.info-user{
+.user-info{
     display:flex;
     gap: 1.5rem;
     flex-direction:column;
     align-items:center;
 }
 
-.avatar-user{
+.avatar-image{
     position:relative;
     border-radius:50%; 
     width: 6rem;
     height: 6rem;  
 }
 
-.avatar-user img{
+.avatar-image img{
     position:absolute;
     border-radius:50%; 
     height:100%;
@@ -33,21 +33,21 @@
     object-fit: cover;
 }
 
-.users{
+.user-details{
     display:flex;
     gap: 0.625rem;
     flex-direction:column;
     align-items:center;
 }
 
-.info{
+.stats-section{
     display:flex;
     flex-direction: row;
     justify-content:space-evenly;
     gap: 1rem;
 }
 
-.posts, .readers, .friends{
+.posts-stat, .readers-stat, .friends-stat{
     display:flex;
     width: 7.31rem;
     align-items:center;
@@ -57,31 +57,31 @@
     height: auto;
 }
 
-.info-user{
+.user-info{
     color: rgba(7, 10, 28, 1);
 }
 
-.name-user{
+.user-name{
     font-size: 1.5rem;
     font-weight: 700;
     font-style: bold;
 }
 
-.info p{
+.stats-section p{
     color:#81818D;
     font-size: 1rem;
 }
 
-.readers{
+.readers-stat{
     border-left: solid 1px rgba(205, 206, 210, 1);
     border-right: solid 1px rgba(205, 206, 210, 1);
 }
 
-.user-avatar {
+.avatar-container {
     position: relative;
 }
 
-.status-user{
+.status-indicator{
     position: absolute;
     width: 1.125rem;
     height: 1.125rem;
@@ -89,7 +89,7 @@
     top: 4.375rem;
 }
 
-.status-user img {
+.status-indicator img {
     width: 100%;
     height: 100%;
 }

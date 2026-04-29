@@ -1,73 +1,121 @@
 function getCSRFToken(){
     return document.querySelector('meta[name="csrf-token"]').getAttribute('content')
 }
-console.log(getCSRFToken())
 
-document.querySelector('.form-register form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const form = this;
-    const foemData = $(form).serialize();
-
-    $.ajax({
-        url: '/auth/register/',
-        type: 'POST',
-        headers: {
-            'X-CSRFToken': getCSRFToken()
-        },
-        data: foemData,
-        success: function(response) {
-            alert("Формф регистрации отправлена")
-        },
-        error: function(xhr){
-            alert('Ошибфка сервера: '+ xhr.responseText);
-        }
-    });
-});
-
-document.querySelector('.form-login form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const form = this;
-    const foemData = $(form).serialize();
-
-    $.ajax({
-        url: '/auth/login/',
-        type: 'POST',
-        headers: {
-            'X-CSRFToken': getCSRFToken()
-        },
-        data: foemData,
-        success: function(response) {
-            alert("Формф логина отправлена")
-        },
-        error: function(xhr){
-            alert('Ошибфка сервера: '+ xhr.responseText);
-        }
-    });
-});
-
-document.querySelector('.form-confirm form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const form = this;
-    const foemData = $(form).serialize();
-
-    $.ajax({
-        url: '/auth/confirm/',
-        type: 'POST',
-        headers: {
-            'X-CSRFToken': getCSRFToken()
-        },
-        data: foemData,
-        success: function(response) {
-            alert("Формф подтвердения отправлена")
-        },
-        error: function(xhr){
-            alert('Ошибфка сервера: '+ xhr.responseText);
-        }
+document.getElementById("register-form").addEventListener(
+    "submit",
+    (event) => {
+        event.preventDefault();
         
-    });
-});
+        const form = event.target;
+        const formData = new FormData(form);
 
-document.getElementById('back').addEventListener('click', function(){
-    $('.form-confirm').hide();
-    $('.form-register').show();
-})
+        fetch(form.action, {
+            method: "POST", 
+            headers: {
+                "X-CSRFToken": getCSRFToken(),
+                "X-Requested-With": "XMLHttpRequest",
+            },
+            body: formData  
+        })
+            .then(async (response) => {
+                const data = await response.json()
+                if (!response.ok){
+                    throw data;    
+                }
+                return data
+            })   
+            .then((data)=>{
+                console.log("Користувач успішно створений")
+                const email = formData.get('email');
+                document.getElementById('confirm-email').value = email;
+                document.getElementById('user-email').textContent = email;
+                navigateTo('email-link');
+            })
+            .catch((data)=>{
+                if(data.errors){
+                    console.log(data.errors)
+                }
+            })
+            
+        
+    }
+)
+
+document.getElementById("login-form").addEventListener(
+    "submit",
+    (event) => {
+        event.preventDefault();
+        
+        const form = event.target;
+        const formData = new FormData(form);
+
+        fetch(form.action, {
+            method: "POST", 
+            headers: {
+                "X-CSRFToken": getCSRFToken(),
+                "X-Requested-With": "XMLHttpRequest",
+            },
+            body: formData  
+        })
+            .then(async (response) => {
+                const data = await response.json()
+                if (!response.ok){
+                    throw data;    
+                }
+                return data
+            })   
+            .then((data)=>{
+                console.log("Користувач успішно залогінився")
+                if (data.redirect) {
+                    window.location.href = data.redirect;
+                }
+            })
+            .catch((data)=>{
+                if(data.errors){
+                    console.log(data.errors)
+                }
+            })
+            
+        
+    }
+)
+
+document.getElementById("confirm-form").addEventListener(
+    "submit",
+    (event) => {
+        event.preventDefault();
+        
+        const form = event.target;
+        const formData = new FormData(form);
+
+        fetch(form.action, {
+            method: "POST", 
+            headers: {
+                "X-CSRFToken": getCSRFToken(),
+                "X-Requested-With": "XMLHttpRequest",
+            },
+            body: formData  
+        })
+            .then(async (response) => {
+                const data = await response.json()
+                if (!response.ok){
+                    throw data;    
+                }
+                return data
+            })   
+            .then((data)=>{
+                console.log("E-mail підтверджено")
+                if (data.redirect) {
+                    window.location.href = data.redirect;
+                }
+            })
+            .catch((data)=>{
+                if(data.message){
+                    console.log(data.message)
+                }
+            })
+            
+        
+    }
+)

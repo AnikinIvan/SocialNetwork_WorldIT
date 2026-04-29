@@ -1,15 +1,16 @@
 {% load static %}
 <div class="form-register" id="form_register">
     <div>
-        <span id="link-register">Реєстрація</span>
-        <span id="link-login">Авторизація</span>
+        <span class = "switchForm" id="link-register">Реєстрація</span>
+        <span class = "switchForm" id="link-login">Авторизація</span>
     </div>
     <span id="email-link">Підвердити пошту</span>
     <p class = "title-welcome">Приєднуйся до World IT</p>
-    <form action="{ url 'register' }" method="post">
+    <form id="register-form" action="{% url 'register' %}" method="post" >
+        {% csrf_token %}
         {{ form_register.as_p }}
-        <button type="submit">
-            <img src="{% static 'user_app/icon/make_an_account.svg' %}" alt="">
+        <button type="submit" class = "button-submit">
+            <img src="{% static 'user_app/icon/make_an_account.svg' %}" class = "image-submit" alt="">
         </button>
     </form>
 </div>
