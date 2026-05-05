@@ -119,3 +119,33 @@ document.getElementById("confirm-form").addEventListener(
         
     }
 )
+
+document.addEventListener('DOMContentLoaded', () => {
+    const passwordFields = document.querySelectorAll('input[type="password"]');
+
+    passwordFields.forEach((input) => {
+        if (input.closest('.password-input-wrapper')) {
+            return;
+        }
+
+        const wrapper = document.createElement('div');
+        wrapper.className = 'password-input-wrapper';
+        input.parentNode.insertBefore(wrapper, input);
+        wrapper.appendChild(input);
+
+        const toggleButton = document.createElement('button');
+        toggleButton.type = 'button';
+        toggleButton.className = 'password-toggle-btn';
+        toggleButton.setAttribute('aria-label', 'Показати пароль');
+        toggleButton.setAttribute('title', 'Показати пароль');
+        wrapper.appendChild(toggleButton);
+
+        toggleButton.addEventListener('click', () => {
+            const isHidden = input.type === 'password';
+            input.type = isHidden ? 'text' : 'password';
+            toggleButton.classList.toggle('opened');
+            toggleButton.setAttribute('aria-label', isHidden ? 'Сховати пароль' : 'Показати пароль');
+            toggleButton.setAttribute('title', isHidden ? 'Сховати пароль' : 'Показати пароль');
+        });
+    });
+});

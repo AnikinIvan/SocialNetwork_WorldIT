@@ -137,3 +137,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'socialnetwork140014@gmail.com' 
+EMAIL_HOST_PASSWORD = 'kkaa qvzj twgg rcln' 
+DEFAULT_FROM_EMAIL = 'socialnetwork140014@gmail.com'
+
+MEDIA_URL = "media/"
+MEDIA_ROOD = BASE_DIR / "media"

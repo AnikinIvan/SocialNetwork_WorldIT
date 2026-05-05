@@ -1,0 +1,89 @@
+.plus-button{
+    border-radius:50%;
+    width:1.25rem;
+    height:1.25rem;
+}
+
+.picture-button{
+    border-radius:50%;
+    width:2.5rem;
+    height:2.5rem;
+}
+
+.submit-button{
+    border-radius: 77.125rem;
+    width:8.125rem;
+    height:2.5rem;
+}
+
+.cross-button{
+    border-radius: 50%;
+    width:1.25rem;
+    height:1.25rem;
+    align-items: flex-start;
+    justify-content: right;
+    float:right;
+}
+
+form button { 
+    display: flex;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+form button img{
+    width:100%;
+    height:100%;
+}
+
+.create-post-forms{
+    display: flex;
+    flex-direction: column;
+    width:48.31rem;
+    height:41.81rem;
+    padding: 1.5rem 2.75rem;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 1.25rem;
+}
+
+.create-post-forms textarea{
+    width: 42.81rem;
+    height: 7.87rem;
+    border-radius: 0.625rem;
+    border: 1px solid rgba(205, 206, 210, 1);
+    padding: 1rem;
+    gap: 0.625rem;
+    font-size: 1rem;
+    font-weight: 400;
+    color: rgba(7, 10, 28, 1);
+    font-family: var(--fontRegular);
+    overflow-y: auto;
+    resize: none;
+}
+
+.create-post-forms textarea:focus, .create-post-forms input:focus{
+    outline: none;
+    border: 1px solid rgba(205, 206, 210, 1);
+}
+
+.create-post-forms input{
+    display:flex;
+    border-radius:0.625rem;
+    width:21.4rem;
+    height:2.625rem;
+    border:1px solid rgba(205, 206, 210, 1);
+    gap:0.625rem;
+    padding: 0.625rem 1rem; 
+    font-size: 1rem;
+    font-weight: 400;
+    color: rgba(7, 10, 28, 1);
+    font-family: var(--fontRegular);
+}
+
+.create-post-forms h2{
+    font-size: 2.125rem;
+    font-family: var(--fontRegular);
+    font-weight: 500;
+    color: rgba(7, 10, 28, 1);
+}

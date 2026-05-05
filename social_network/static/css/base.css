@@ -66,24 +66,23 @@ header nav{
 main {
     position: relative;
     display: flex;
-    flex-direction: row; /* Сайдбар и Контент в одну линию */
-    justify-content: center; /* Центрирует всю связку по горизонтали */
+    flex-direction: row; 
+    justify-content: center; 
     align-items: start;
     max-width: 1440px;
     width: 100%;
     margin: 0 auto;
-    padding: 0.5rem; /* Добавили отступ сверху (3rem) и по бокам */
-    gap: 1.5rem; /* Расстояние между сайдбаром и формой */
+    padding: 0.5rem; 
+    gap: 1.5rem; 
     background-color: #faf8ff;
 }
 
 .content {
     display: flex;
-    justify-content: center; /* Центрирует форму ВНУТРИ бирюзового блока */
-    align-items: center; /* Центрирует форму по вертикали */
+    justify-content: center; 
+    align-items: center; 
     width: 77%;
-    height: 80vh; /* Высота блока (можешь подправить под себя) */
-    background-color: turquoise; /* Твой цвет */
+    height: 80vh; 
 }
 
 .sidebar {

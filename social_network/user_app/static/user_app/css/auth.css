@@ -2,7 +2,6 @@ main .forms{
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: rgb(178, 178, 255);
     width: fit-content;
 }
 
@@ -52,6 +51,44 @@ button img{
     gap:0.625rem;
     padding: 0.625rem 1rem;
     font-weight: 400;
+}
+
+.password-input-wrapper{
+    position: relative;
+    display: block;
+    width: 25rem;
+    box-sizing: border-box;
+}
+
+.password-input-wrapper input{
+    display: block;
+    width: 100%;
+    padding-right: 3.5rem;
+    box-sizing: border-box;
+}
+
+.password-toggle-btn{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0.85rem;
+    margin: auto !important;
+    width: 1.75rem !important;
+    height: 1.75rem !important;
+    border: none;
+    background: transparent url("../icon/eye_closed.svg") center center no-repeat !important;
+    background-size: 1.25rem 1.25rem !important;
+    cursor: pointer;
+    z-index: 10;
+    padding: 0 !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0 !important;
+}
+
+.password-toggle-btn.opened{
+    background-image: url("../icon/eye_opened.svg") !important;
 }
 
 .forms label {
