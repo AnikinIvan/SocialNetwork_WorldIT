@@ -50,7 +50,7 @@ form button img{
     border-radius: 1.25rem;
 }
 
-#post-modal {
+#modal-create-post {
     position: fixed;
     inset: 0;
 

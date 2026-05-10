@@ -1,85 +1,74 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render
+from django.views.generic import ListView, FormView
+from django.core.paginator import Paginator
 from django.http import JsonResponse
+from django.template.loader import render_to_string
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from django.views.generic import FormView, ListView
 
-from .forms import PostForm
 from .models import Post
+from .forms import PostForm
 
+# Create your views here.
 
-class PostAppView(LoginRequiredMixin, ListView):
-    """
-    List view for user posts.
-    """
-    model = Post
-    template_name = "post_app/post.html"
-    context_object_name = "posts"
-    ordering = ["-created_at"]
-    login_url = reverse_lazy("auth")
-
+class PostListView(ListView, LoginRequiredMixin):
+    template_name = 'post_app/all_posts.html'
+    paginate_by = 5 #400
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["form"] = PostForm()
+        context['form_create_post'] = PostForm()
+        context['posts'] = Post.objects.filter(author_id = self.request.user)[:self.paginate_by]
         return context
-
-
+    def get_queryset(self):
+        return Post.objects.filter(author_id = self.request.user)
+    def get(self, request, *args, **kwargs):
+        if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+            queryset = self.get_queryset()        
+            paginator = Paginator(queryset, self.paginate_by)
+            page_number = request.GET.get('page')
+            page_obj = paginator.get_page(page_number)
+            if int(page_number) > paginator.num_pages:
+                return JsonResponse({'success': False})
+            return JsonResponse({
+                'success': True,
+                'html': render_to_string(self.template_name, {'posts': page_obj.object_list})
+            })
+        
+        return super().get(request, *args, **kwargs)
+    
 class PostCreateView(LoginRequiredMixin, FormView):
-    """
-    View для створення публікації.
-
-    Сторінка доступна тільки авторизованому користувачу.
-    Форма відправляється через fetch, тому вим повертає JSON,
-    а не звичайний HTML redirect.
-    """
-
-    template_name = "post_app/create_post.html"
     form_class = PostForm
-    success_url = reverse_lazy("post_list")
-    login_url = reverse_lazy("auth")
-
+    success_url = reverse_lazy('post')
+    login_url = reverse_lazy('auth')
+    
     def get_form_kwargs(self):
-        """
-        Передає форму додатковий параметр links.
-
-        Шаблоні може бути кілька полів input name="links".
-        request.POST.getlist("links") збирає їх у всі один список.
-        """
         kwargs = super().get_form_kwargs()
-
-        if self.request.method == "POST":
-            kwargs["links"] = self.request.POST.getlist("links")
-            kwargs["images"] = self.request.FILES.getlist("photos")
-
+        if self.request.method == 'POST':
+            kwargs['links'] = self.request.POST.getlist('links')
+            kwargs['images'] = self.request.FILES.getlist('images')
+            
         return kwargs
-
-    def form_valid(self, form):
-        """
-        Обробляє валідну форму.
-
-        Зберігає пост з поточним користувачем як автором
-        і повертає JSON-відповідь для JavaScript.
-        """
-        post = form.save(author=self.request.user)
+    def form_valid(self, form: PostForm):
+        post = form.save(author= self.request.user)
+        print(post)
         return JsonResponse(
             {
-                "success": True,
-                "message": "Публікація створено успішно",
-                "redirect_url": str(self.success_url),
-                "post_id": post.id,
+                'success': True,
+                'message': 'Публікацію створено успішно',
+                'redirect_url': str(self.success_url),
+                'post_id': post.id
             }
         )
-
-    def form_invalid(self, form):
-        """
-        Обробляє невалідну форму.
-
-        Повертає помилки у JSON-форматі, щоб JavaScript
-        міг показати їх без перезавантаження сторінки.
-        """
+    def form_invalid(self, form: PostForm):
         return JsonResponse(
             {
-                "success": False,
-                "errors": form.errors.get_json_data(),
+                "success" : False,
+                'errors': form.errors.get_json_data()
             },
-            status=400,
+            status = 400
         )
+    
+    
+            
+    

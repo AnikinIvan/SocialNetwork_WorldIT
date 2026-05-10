@@ -19,7 +19,6 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from .settings import MEDIA_URL, MEDIA_ROOT, DEBUG
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include('core_app.urls')),

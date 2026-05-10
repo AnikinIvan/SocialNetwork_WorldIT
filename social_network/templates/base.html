@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
     {% load static %}
 <head>
@@ -6,38 +7,41 @@
     {% block meta %}{% endblock %}
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/sidebar-profile.css' %}">
+    
     {% block links %}{% endblock %}
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
+    {% block modal-create-post %}{% endblock modal-create-post %}
     <header>
         <nav>
             <a href="{% url 'home' %}" class = "logo">
-                <img src="{% static 'icons/logo.svg' %}" alt="">
+                <img src="{% static 'icons/logo/logo.svg' %}" alt="">
             </a>
             {% if request.path != '/auth/' %}
                 <div class = "header-nav">
-                    <a href="{% url 'home' %}" class=""><img src="{% static 'icons/House.svg' %}" alt="">Головна</a>
-                    <a href="{% url 'post_list' %}" class=""><img src="{% static 'icons/painting.svg' %}" alt="">Мої публікації</a>
-                    <a href="{% url 'friends' %}" class=""><img src="{% static 'icons/people.svg' %}" alt="">Друзі</a>
-                    <a href="chats" class=""><img src="{% static 'icons/chat.svg' %}" alt="">Чати</a>
-                    <a href="{% url 'settings' %}" class=""><img src="{% static 'icons/settings.svg' %}" alt="">Налаштування</a>
-                    <a href="{% url 'auth' %}" class = "logout"><img src="{% static 'icons/leave.svg' %}" alt=""></a>
+                    <a href="{% url 'home' %}" class=""><img src="{% static 'icons/logo/House.svg' %}" alt="">Головна</a>
+                    <a href="{% url 'post' %}" class=""><img src="{% static 'icons/logo/painting.svg' %}" alt="">Мої публікації</a>
+                    <a href="{% url 'friends' %}" class=""><img src="{% static 'icons/logo/people.svg' %}" alt="">Друзі</a>
+                    <a href="chats" class=""><img src="{% static 'icons/logo/chat.svg' %}" alt="">Чати</a>
+                    <a href="{% url 'settings' %}" class=""><img src="{% static 'icons/logo/settings.svg' %}" alt="">Налаштування</a>
+                    <a href="{% url 'auth' %}" class = "logout"><img src="{% static 'icons/logo/leave.svg' %}" alt=""></a>
                 </div>
             {% endif %}
         </nav>
+        {% block header %}{% endblock %}
     </header>
     <main>
         <div class = "sidebar">
             {% block sidebar %}
-                <div class="sidebar-profile" onclick="location.href='{% url 'post_list' %}'">
+                <div class="sidebar-profile" onclick="location.href='{% url 'post' %}'">
                     <div class="user-info">
                         <div class="avatar-container"> 
                             <div class="avatar-image">
                                 <img  src="{% static 'icons/avatar.jpg' %}" alt=""> 
                             </div>
                             <div class="status-indicator">
-                                <img src="{% static 'icons/online-status-green.png' %}" alt="">
+                                <img src="{% static 'icons/logo/online-status-green.png' %}" alt="">
                             </div>
                         </div>
                         <div class = "user-details">

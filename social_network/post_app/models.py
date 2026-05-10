@@ -1,4 +1,5 @@
 from django.db import models
+
 from django.conf import settings
 # Create your models here.
 
@@ -46,8 +47,8 @@ class PostImage(models.Model):
         on_delete= models.CASCADE,
         related_name= "images"
     )
-    original_image = models.ImageField(upload_to= "post_app/media/original_image/")
-    compressed_image = models.ImageField(upload_to= "post_app/media/compressed_image/")
+    original_image = models.ImageField(upload_to= "post_app/original_image/")
+    compressed_image = models.ImageField(upload_to= "post_app/compressed_image/")
     
     def __str__(self):
         return f"Image: {self.original_image}"
