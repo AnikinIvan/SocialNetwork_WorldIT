@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
-from .settings import MEDIA_URL, MEDIA_ROOD, DEBUG
+from .settings import MEDIA_URL, MEDIA_ROOT, DEBUG
 
 
 urlpatterns = [
@@ -30,4 +30,4 @@ urlpatterns = [
 ]
 
 if DEBUG:
-    urlpatterns += static(MEDIA_URL, document_rood = MEDIA_ROOD, null = True)
+    urlpatterns += static(MEDIA_URL, document_root = MEDIA_ROOT, null = True)

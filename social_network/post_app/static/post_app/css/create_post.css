@@ -37,14 +37,29 @@ form button img{
     height:100%;
 }
 
-.create-post-forms{
+.create-post-forms {
+    position: relative; /* ВАЖНО */
+
     display: flex;
     flex-direction: column;
-    width:48.31rem;
-    height:41.81rem;
+    width: 48.31rem;
+    height: fit-content;
     padding: 1.5rem 2.75rem;
-    background-color: rgba(255, 255, 255, 1);
+
+    background-color: white;
     border-radius: 1.25rem;
+}
+
+#post-modal {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
 }
 
 .create-post-forms textarea{
@@ -81,9 +96,109 @@ form button img{
     font-family: var(--fontRegular);
 }
 
+.field-with-button{
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+}
+
+label {
+    display: flex;
+    gap: 0.75rem;
+    font-family: var(--fontRegular);
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(7, 10, 28, 1);
+}
+
+.link-field-row,
+.tags-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+}
+
+.create-post-forms input[type="file"]{
+    display: none;
+}
+
+.bottom-buttons{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+    flex-wrap: nowrap;
+}
+
+.create-post-forms .smile-button,
+.create-post-forms .submit-button{
+    flex: 0 0 auto;
+}
+
+.create-post-forms .plus-button{
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.create-post-forms .picture-button{
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.create-post-forms .tags-wrapper .tags{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.create-post-forms .tags-wrapper .tags label{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
 .create-post-forms h2{
     font-size: 2.125rem;
     font-family: var(--fontRegular);
     font-weight: 500;
     color: rgba(7, 10, 28, 1);
+}
+
+.create-post-forms .tags div{
+    display: flex;
+    width: 5.6875rem;
+    height: 1.75em;
+    border-radius: 6px;
+    gap: 2.6rem;
+    padding: 0.625rem;
+    background-color: #E9E5EE;
+    color: #543C52;
+    font-size: 0.875rem;
+    font-weight: 400;
+    font-family: var(--fontRegular);
+    align-items: center;
+    justify-content: center;
+}
+.create-post-forms .tags div input[type="checkbox"]{
+    display: none;
+}
+
+.image-preview {
+    display: flex;
+    gap: 10px;
+    width: 13.6rem;
+    height: 16.5rem;
+    margin-top: 10px;
+    flex-wrap: wrap;
+     border-radius: 1rem;
+}
+
+.preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
 }

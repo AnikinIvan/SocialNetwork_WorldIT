@@ -1,9 +1,59 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block links %}
+    <link rel="stylesheet" href="{% static 'post_app/css/post.css' %}">
+{% endblock %}
+
+{% block meta %}
+    <meta name="csrf-token" content="{{ csrf_token }}">
+{% endblock %}
+
 {% block sidebar %}
     {{ block.super }}
 {% endblock %}
 
 {% block content %}
+<div class = "make-publication">
+    <textarea name="" id="" placeholder = "Текст публікації"></textarea>
+    <div class = "buttons">
+        <button class = "smile-btn">
+            <img src="{% static 'post_app/icons/smile.svg' %}" class = "smile-img">
+        </button>
+        <button class = "start-making-publication-btn">
+            <img src="{% static 'post_app/icons/start_making_publication.svg' %}" class = "start-making-publication-img" id="open-modal-post">
+        </button>
+    </div>
+</div>
+<div class="posts">
+  {% for post in posts %}
+    <div class="post">
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.content }}</p>
+
+        <!-- теги -->
+        {% for tag in post.tags.all %}
+            <span>#{{ tag.name }}</span>
+        {% endfor %}
+
+        <!-- ссылки -->
+        {% for link in post.links.all %}
+            <a href="{{ link.url }}">{{ link.url }}</a>
+        {% endfor %}
+
+        <!-- картинки -->
+        {% for image in post.images.all %}
+            <img src="{{ image.compressed_image.url }}" width="150">
+        {% endfor %}
+    </div>
+{% endfor %}
+</div>
+<div class="modal-windows">
+    {% include 'post_app/particles/post_modal.html' %}
+    {% include 'post_app/particles/tag_modal.html' %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'post_app/js/create_post.js' %}"></script>
 {% endblock %}

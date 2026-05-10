@@ -5,57 +5,13 @@
     <link rel="stylesheet" href="{% static 'post_app/css/create_post.css' %}">
 {% endblock %}
 
-{% block meta %}
-    <meta name="csrf-token" content="{{csrf_token}}">
-{% endblock %}
-
-{% block title %}
-    Створеня Публікації
-{% endblock %}
-
 {% block content %}
-    <form action="" method="post" enctype="multipart/form-data" class = "create-post-forms" id="create-post-forms">
-        {% csrf_token %}
-        <div>
-            <button class = "cross-button">
-                <img src="{% static 'post_app/icons/cross.svg' %}" alt="">
-            </button>
-        </div>
-        <h2>Створення публікації</h2>
-        {{form.as_p}}
-        
-        
-        <button class = "plus-button" type="button" id="addLinks">
-            <img class = "plus-image" src="{% static 'post_app/icons/plus.svg' %}" alt="">
-        </button>
-        <p>
-            <button class = "picture-button">
-                <img class = "picture-image" src="{% static 'post_app/icons/image.svg' %}" alt="">
-            </button>
-            <button class = "smile-button">
-                <img src="{% static 'post_app/icons/smile.svg' %}" alt="">
-            </button>
-            <button class = "submit-button" type="submit">
-                <img class = "submit-image" src="{% static 'post_app/icons/publication_btn.svg' %}" alt="">
-            </button>
-        </p>
-    </form>
-
-{% endblock %}
-
-{% block scripts %}
-    
-<script>
-    document.querySelector("#addLinks").addEventListener("click", () => {
-        const container = document.querySelector(".links");
-
-        const input = document.createElement("input");
-        input.type = "text";
-        input.name = "links";
-        input.placeholder = "https://...";
-        input.className = "input";
-
-        container.insertBefore(input, container.lastElementChild);
-    });
-</script>
+    <div class="create-post-page">
+        <h1>Створити публікацію</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Опублікувати</button>
+        </form>
+    </div>
 {% endblock %}

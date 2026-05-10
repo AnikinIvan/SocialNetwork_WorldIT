@@ -56,7 +56,7 @@ class PostForm(forms.ModelForm):
             }),
             "topic": forms.TextInput(attrs={
                 "class": "input",
-                "placeholder": "Напишіть тему публікації"
+                "placeholder": "Напишіть тему публікації",
             }),
             "content": forms.Textarea(attrs={
                 "class": "textarea",
