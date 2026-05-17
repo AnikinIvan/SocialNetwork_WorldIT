@@ -146,3 +146,21 @@ class PostForm(forms.ModelForm):
         compressed_name = f'compressed_{image.name.rsplit(".", 1)[0]}.jpg'
         
         return ContentFile(buffer.getvalue(), name= compressed_name)
+    
+class TagForm(forms.ModelForm):
+    class Meta:
+        model = Tag
+        fields = ("name",)
+        widgets = {
+            "name": forms.TextInput(attrs={
+                "class": "input",
+                "placeholder": "#",
+                "id": "tag-name-input"
+            }),
+        }
+
+    def clean_name(self):
+        name = self.cleaned_data.get('name')
+        if name and not name.startswith('#'):
+            name = f'#{name}'
+        return name

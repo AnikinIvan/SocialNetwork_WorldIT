@@ -1,7 +1,13 @@
-.plus-button{
+.plus-button, #tag-button{
     border-radius:50%;
     width:1.25rem;
     height:1.25rem;
+}
+
+.plus-button img {
+    width: 100%;
+    height: 100%;
+
 }
 
 .picture-button{
@@ -16,13 +22,17 @@
     height:2.5rem;
 }
 
-.cross-button{
+.close-modal {
+    display: flex;              /* центрируем картинку */
+    align-items: center;
+    justify-content: center;
+    position: absolute;        /* вместо float */
+    right: 1rem;               /* расстояние от правого края */
+    top: 1rem;                 /* расстояние от верхнего края */
+    width: 1.25rem;
+    height: 1.25rem;
     border-radius: 50%;
-    width:1.25rem;
-    height:1.25rem;
-    align-items: flex-start;
-    justify-content: right;
-    float:right;
+    cursor: pointer;
 }
 
 form button { 
@@ -32,32 +42,33 @@ form button {
     cursor: pointer;
 }
 
-form button img{
+form button img, form span img {
+    object-fit: cover;
     width:100%;
     height:100%;
 }
 
 .create-post-forms {
-    position: relative; /* ВАЖНО */
-
+    flex-shrink: 0; 
+    position: relative; 
     display: flex;
     flex-direction: column;
     width: 48.31rem;
-    height: fit-content;
+    height: 41.8rem;
+    overflow-y: auto;
+    overflow-x: hidden;
     padding: 1.5rem 2.75rem;
-
     background-color: white;
     border-radius: 1.25rem;
 }
 
+
 #modal-create-post {
     position: fixed;
     inset: 0;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     background: rgba(0, 0, 0, 0.5);
     z-index: 1000;
 }
@@ -65,6 +76,7 @@ form button img{
 .create-post-forms textarea{
     width: 42.81rem;
     height: 7.87rem;
+    flex-shrink: 0; 
     border-radius: 0.625rem;
     border: 1px solid rgba(205, 206, 210, 1);
     padding: 1rem;
@@ -74,7 +86,6 @@ form button img{
     color: rgba(7, 10, 28, 1);
     font-family: var(--fontRegular);
     overflow-y: auto;
-    resize: none;
 }
 
 .create-post-forms textarea:focus, .create-post-forms input:focus{
@@ -186,14 +197,18 @@ label {
     display: none;
 }
 
-.image-preview {
+#image-preview {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
+    width: 42.8rem;
+    margin-top: 10px;
+}
+
+.preview-container {
+    position: relative;
     width: 13.6rem;
     height: 16.5rem;
-    margin-top: 10px;
-    flex-wrap: wrap;
-     border-radius: 1rem;
 }
 
 .preview-img {
@@ -201,4 +216,49 @@ label {
     height: 100%;
     object-fit: cover;
     border-radius: 1rem;
+    display: block;
+}
+
+.remove-image-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+}
+
+.remove-image-btn img {
+    width: 100%; 
+    height: 100%;
+    object-fit: contain;
+}
+
+.link-field-row {
+    width: 21.4rem;
+}
+
+.link-item-row {
+    display: flex;      
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;          
+    width: 100%;        
+    margin-bottom: 10px;
+}
+
+.dynamic-input {
+    flex: 1; 
+}
+
+.actions-container {
+    display: flex;
+    gap: 8px;
+    align-items: center;
 }

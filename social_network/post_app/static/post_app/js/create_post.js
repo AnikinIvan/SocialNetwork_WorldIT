@@ -16,18 +16,75 @@ function getCSRFToken(){
     return document.querySelector('meta[name="csrf-token"]').getAttribute('content')
 }
 // 
-document.getElementById('add-link').addEventListener(
-    'click',
-    function (){
-        const input =  document.createElement('input')
-        input.type = 'url'
-        input.name = 'links'
-        input.placeholder = 'https://www.instagram.com/world.it.academy'
+document.addEventListener('DOMContentLoaded', function() {
+    const linksList = document.getElementById('links-list');
 
-        document.getElementById('links-list').appendChild(document.createElement('br'))
-        document.getElementById('links-list').appendChild(input)
+    function createLinkRow(value = '') {
+        if (!linksList) return;
+
+        const row = document.createElement('div');
+        row.className = 'link-item-row';
+        
+        const input = document.createElement('input');
+        input.type = 'url';
+        input.name = 'links';
+        input.value = value;
+        input.placeholder = 'https://www.instagram.com/world.it.academy';
+        input.className = 'dynamic-input';
+
+        const actions = document.createElement('div');
+        actions.className = 'actions-container';
+
+        row.appendChild(input);
+        row.appendChild(actions);
+        linksList.appendChild(row);
+
+        updateButtons();
     }
-)
+
+    function updateButtons() {
+        const allRows = document.querySelectorAll('.link-item-row');
+        
+        allRows.forEach((row, index) => {
+            const actionsContainer = row.querySelector('.actions-container');
+            if (!actionsContainer) return;
+            actionsContainer.innerHTML = ''; 
+
+            if (index === allRows.length - 1) {
+                const plusBtn = document.createElement('button');
+                plusBtn.type = 'button';
+                plusBtn.className = 'circle-btn plus';
+                plusBtn.innerHTML = `<img src="/static/icons/modal/plus.svg" alt="Добавить">`;
+                plusBtn.onclick = () => createLinkRow();
+                actionsContainer.appendChild(plusBtn);
+
+                if (allRows.length > 1) {
+                    const removeBtn = document.createElement('button');
+                    removeBtn.type = 'button';
+                    removeBtn.className = 'circle-btn remove';
+                    removeBtn.innerHTML = `<img src="/static/icons/modal/del_links.svg" alt="Удалить">`;
+                    removeBtn.onclick = () => {
+                        row.remove();
+                        updateButtons();
+                    };
+                    actionsContainer.appendChild(removeBtn);
+                }
+            }
+        });
+    }
+    
+    if (linksList) {
+        createLinkRow();
+    }
+});
+
+const chooseImagesBtn = document.getElementById("choose-images");
+    const imagesInput = document.getElementById("images-input");
+    if (chooseImagesBtn && imagesInput) {
+        chooseImagesBtn.addEventListener("click", function() {
+            imagesInput.click();
+        });
+    }
 // 
 document.getElementById('post-create-form').addEventListener(
     'submit',
