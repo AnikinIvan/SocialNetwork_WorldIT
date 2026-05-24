@@ -10,7 +10,7 @@
     <div class="requests">
         <div class="inquiry">
             <span>
-                <img src="{% static 'icons/requests.svg' %}" alt="">
+                <img src="{% static 'icons/logo/requests.svg' %}" alt="">
                 <p>Запити</p>
             </span>
             <a href="{% url 'friends' %}">Дивитись всі</a>
@@ -51,7 +51,7 @@
     <div class="message-people">
         <div class="messages">
                 <span>
-                    <img src="{% static 'icons/chat.svg' %}" alt="">
+                    <img src="{% static 'icons/logo/chat.svg' %}" alt="">
                     <p>Повідомлення</p>
                 </span>
                 <p>Дивитись всі</p>
@@ -104,5 +104,11 @@
 {% endblock %}
 
 {% block content %}
-    
+   
+{% endblock %}
+
+
+{% block script %}
+    <script type="module" src="{% static 'core_app/js/modal.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 {% endblock %}

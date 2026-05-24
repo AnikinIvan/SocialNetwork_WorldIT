@@ -10,7 +10,7 @@ from .models import Post, Tag
 from .forms import PostForm, TagForm
 
 # Create your views here.
-class PostListView(ListView, LoginRequiredMixin):
+class PostListView(LoginRequiredMixin, ListView):
     # model = Post
     template_name = 'post_app/all_posts.html'
     # context_object_name = 'posts'

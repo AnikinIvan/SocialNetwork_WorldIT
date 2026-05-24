@@ -1,0 +1,20 @@
+{% load static %}
+
+{% for person in users %}
+    <div class="card-user">
+        <span>
+            <div class="avatar-div">
+                <img class="avatar-img" src="{% static 'icons/avatar.jpg' %}" alt="">
+            </div>
+            <div class="status-div">
+                <img src="{% static 'icons/logo/offline-status.svg' %}" alt="">
+            </div>
+        </span>
+        <h3>{{ person.email }}</h3>
+        <h4>@thelili</h4>
+        <div class="buttons"> 
+            <button class="action-button"></button>
+            <button class="delete-button"><img src="{% static 'user_app/icon/friends/delete_btn.svg' %}" alt=""></button>
+        </div>
+    </div>
+{% endfor %}

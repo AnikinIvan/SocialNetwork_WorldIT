@@ -24,7 +24,6 @@ urlpatterns = [
     path("", include('core_app.urls')),
     path("", include('settings_app.urls')),
     path("post/", include('post_app.urls')),
-    path("", include('friends_app.urls')),
     path("auth/", include('user_app.urls')),
 ]
 

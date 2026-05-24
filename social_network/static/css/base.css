@@ -81,9 +81,8 @@ main {
     display: flex;
     flex-direction: column;
     width: 77%;
-    height: 80vh; 
-
-    
+    height: fit-content; 
+    column-gap: 20px;
 }
 
 .sidebar {
@@ -128,18 +127,20 @@ main {
     background-color: #E9E5EE;
 }
 
-.logout{
+.logout-btn{
     height:2.5rem !important;
     cursor: pointer;
     padding:0 !important;
+    background-color: transparent;
+    border: none;
 }
 
-.header-nav .logout img{
+.header-nav .logout-btn img{
     width:100%;
     height:100%;
 }
 
-header .header-nav .logout:hover, .header-nav .logout:active{
+header .header-nav .logout-btn:hover, .header-nav .logout-btn:active{
     background-color:transparent;
 }
 

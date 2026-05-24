@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core_app',
     'settings_app',
-    'friends_app',
     'post_app',
     'user_app'
 ]
@@ -146,3 +145,5 @@ DEFAULT_FROM_EMAIL = 'socialnetwork140014@gmail.com'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+LOGIN_URL = '/auth/'

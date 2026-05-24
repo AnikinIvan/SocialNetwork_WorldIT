@@ -26,7 +26,10 @@
                     <a href="{% url 'friends' %}" class=""><img src="{% static 'icons/logo/people.svg' %}" alt="">Друзі</a>
                     <a href="chats" class=""><img src="{% static 'icons/logo/chat.svg' %}" alt="">Чати</a>
                     <a href="{% url 'settings' %}" class=""><img src="{% static 'icons/logo/settings.svg' %}" alt="">Налаштування</a>
-                    <a href="{% url 'auth' %}" class = "logout"><img src="{% static 'icons/logo/leave.svg' %}" alt=""></a>
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="logout-btn"><img src="{% static 'icons/logo/leave.svg' %}" alt=""></button>
+                    </form>
                 </div>
             {% endif %}
         </nav>
@@ -42,12 +45,12 @@
                                 <img  src="{% static 'icons/avatar.jpg' %}" alt=""> 
                             </div>
                             <div class="status-indicator">
-                                <img src="{% static 'icons/logo/online-status-green.png' %}" alt="">
+                                <img src="{% static 'icons/logo/online-status.png' %}" alt="">
                             </div>
                         </div>
                         <div class = "user-details">
-                            <h2 class="user-name">Lina Li</h2>
-                            <p class="user-handle">@thelili</p>
+                            <h2 class="user-name">{{ user.nickname|default:"Lina Li" }}</h2>
+                            <p class="user-handle">@{{ user.username|default:"thelili" }}</p>
                         </div>
                     </div>
                     <div class="stats-section">
@@ -73,6 +76,7 @@
     </main>
     {% block scripts %}
     <script src = "{% static 'js/links-color.js' %}"></script>
+    <script src="{% static 'user_app/js/friends_section.js' %}"></script>
     {% endblock %}
 </body>
 </html>

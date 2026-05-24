@@ -3,9 +3,13 @@ from django.views.generic import TemplateView, FormView, View
 from .forms import *
 from django.urls import reverse_lazy
 from django.http import JsonResponse, HttpResponse
-from django.contrib.auth import login
+from django.contrib.auth import login, logout 
 from django.shortcuts import get_object_or_404
-from .utils import send_verification_code_email
+from .utils.auth_emailcode import send_verification_code_email
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.template.loader import render_to_string
+from django.core.paginator import Paginator
+from .utils.friend_queries import *
 
 # Create your views here.
 class AuthTemplateView(TemplateView):
@@ -46,15 +50,21 @@ class RegisterView(View):
     
 class LoginView(View):
     def post(self, request, *args, **kwargs):
-        form = LoginForm(request = request, data = request.POST)
+        form = LoginForm(request=request, data=request.POST)
         if form.is_valid():
             user = form.get_user()
             print(user)
             login(request, user)
+
             return JsonResponse({
                 "success": True,
-                "message": "Користувач успішно залогінився"
+                "message": "Користувач успішно залогінився",
+                "redirect": "/"
             })
+        return JsonResponse({
+            "success": False,
+            "errors": form.errors.get_json_data()
+        }, status=400)
     
 class ConfirmEmailView(View):
     def post(self, request, *args, **kwargs):
@@ -85,3 +95,46 @@ class ConfirmEmailView(View):
                 "message": "Код пітвердження невірний."
             }, status = 400 ) 
 
+class LogoutView(LoginRequiredMixin, View):
+    def post(self, request, *args, **kwargs):
+        logout(request)
+        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            return JsonResponse({
+                "success": True,
+                "message": "Ви успішно вийшли із системи",
+                "redirect": "/auth/"
+            })
+        return redirect('auth')
+
+
+class FriendsView(TemplateView):
+    template_name = "user_app/friends.html"
+    login_url = reverse_lazy("auth")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        current_user = self.request.user
+        context["sections"] = {
+            "requests": {"title": "Запити", "users": get_friendship_requests(current_user)[:6]},
+            "recommendations" : {"title": "Рекомендації", "users": get_friendships_recommendations(current_user)[:6]},
+            "friends" : {"title": "Всі друзі", "users": get_friends(current_user)[:6]}
+        }
+        return context
+    
+class FriendSectionView(LoginRequiredMixin, View):
+    def get(self, request, section, *args, **kwargs):
+        if section == "requests":
+            users = get_friendship_requests(request.user)
+        elif section == "recommendations":
+            users = get_friendships_recommendations(request.user)
+        else:
+            users = get_friends(request.user)
+
+        page_obj = Paginator(users, 6).get_page(request.GET.get("page", 1))
+
+        html = render_to_string("user_app/particles/friends/friends_cards.html",
+                                {"users": page_obj.object_list, "section": section},
+                                request=request
+                                )
+        
+        return JsonResponse({"html": html, "has_next_page":page_obj.has_next()})
