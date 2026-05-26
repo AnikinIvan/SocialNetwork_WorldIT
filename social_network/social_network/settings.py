@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,10 +43,14 @@ INSTALLED_APPS = [
     'core_app',
     'settings_app',
     'post_app',
-    'user_app'
+    'user_app',
+    'chat_app',
+
 ]
 
 AUTH_USER_MODEL = 'user_app.User'
+
+ASGI_APPLICATION  = 'social_network.asgi.application'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

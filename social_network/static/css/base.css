@@ -82,7 +82,7 @@ main {
     flex-direction: column;
     width: 77%;
     height: fit-content; 
-    column-gap: 20px;
+    gap: 1rem;
 }
 
 .sidebar {
@@ -93,8 +93,6 @@ main {
     gap: 0.75rem;
     background-color: transparent;
 }
-
-
 
 .header-nav {
     display:flex;

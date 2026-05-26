@@ -151,29 +151,13 @@
     height: 2.5rem;
 }
 
-.section[data-section-type='Запити'] .action-button{
-    width: 6.93rem;
-    background-image:url('../../user_app/icon/friends/confirm_btn.svg'); 
-}
-
-.section[data-section-link='Рекомендації'] .action-button,
-.section[data-section-type='Рекомендації'] .action-button {
-    width: 6.93rem;
-    background-image: url('../../user_app/icon/friends/add_btn.svg'); 
-}
-.section[data-section-link='Всі друзі'] .action-button,
-.section[data-section-type='Всі Друзі'] .action-button {
-    width: 7.68rem;
-    background-image:url('../../user_app/icon/friends/message_btn.svg'); 
-}
 
 #section .back-main {
     display: none;
 }
 
-/* 2. Показуємо її ТІЛЬКИ тоді, коли сам блок #section стає видимим */
 #section[style*="display: block"] .back-main {
-    display: inline-block; /* або flex, залежно від твоєї верстки */
+    display: inline-block; 
 }
 
 

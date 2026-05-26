@@ -9,4 +9,5 @@ urlpatterns = [
     path(route='confirm/', view= ConfirmEmailView.as_view(), name= 'confirm'),
     path(route="friends/", view = FriendsView.as_view(), name="friends"),
     path(route="friends/<str:section>/", view = FriendSectionView.as_view(), name="friend_section"),
+    path(route="friends/action/<int:other_user_id>/<str:action>/", view = FriendActionView.as_view(), name="friend_action")
 ]

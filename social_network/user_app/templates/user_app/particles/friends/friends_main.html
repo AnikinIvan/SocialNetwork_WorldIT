@@ -5,7 +5,7 @@
                 <h2>{{section.title}}</h2>
                 <button type="button" data-section-link="{{ section.title }}">Дивитись всі </button>
             </div>
-            <div class="section-main">
+            <div class="section-main" id="{{key}}MainList">
                 {% if section.users %}
                     {% include "user_app/particles/friends/friends_cards.html" with users=section.users section=key %}
                 {% else %}

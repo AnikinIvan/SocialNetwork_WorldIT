@@ -1,7 +1,27 @@
 {% load static %}
 {% for post in posts %}
-        <p>{{ user.nickname }}</p>
-    <article class="post">
+<article class="post">
+    <div class="post-header">
+        <div class="user-details-post">
+            <div class="avatar-post">
+                <img src="{% static 'icons/avatar.jpg' %}" alt="{{ user.nickname }}">
+                <div class="status-indicator">
+                    <img src="{% static 'icons/logo/online-status.png' %}" alt="">
+                </div>
+            </div>
+            <p>{{ user.nickname }}</p>
+        </div>
+        <div class="post-item">
+            <div class="post-signature">
+                <img src="{% static 'icons/Interaction Icon.png' %}" alt="">
+            </div>
+            <div class="post-actions">
+                <img src="{% static 'icons/modal/action_post.svg' %}" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="post-main">
+
         <h2>{{ post.title }}</h2>
 
         {% if post.topic and post.content%}
@@ -26,18 +46,19 @@
                 {% endfor %}
             </ul>
         {% endif %}
-    <div>
-        {% if post.images.all %}
         <div>
-            {% for image in post.images.all %}
-                <p>
-                    <a href="{{ image.original_image.url }}" target="_blank" rel="noopener noreferrer">
-                        <img src="{{ image.compressed_image.url }}" alt="{{ post.title }}">
-                    </a>
-                </p>
-            {% endfor %} 
+            {% if post.images.all %}
+            <div>
+                {% for image in post.images.all %}
+                    <p>
+                        <a href="{{ image.original_image.url }}" target="_blank" rel="noopener noreferrer">
+                            <img src="{{ image.compressed_image.url }}" alt="{{ post.title }}">
+                        </a>
+                    </p>
+                {% endfor %} 
+            </div>
+            {% endif %}
         </div>
-        {% endif %}
     </div>
-    </article>
+</article>
 {% endfor %}

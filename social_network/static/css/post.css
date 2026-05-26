@@ -60,18 +60,19 @@ textarea:focus, input:focus{
     outline: none;
     border: 1px solid rgba(205, 206, 210, 1);
 }
+
 .post{
     width:100%;
-    height:76.18rem;
-    box-sizing: border-box;
-    padding: 1rem 1.25rem;
-    background-color: #FFFFFF;
-    border-radius: 10px;
-    border: 1px solid #CDCED2;
+    background:#fff;
+    border:1px solid #CDCED2;
+    border-radius:10px;
+    height:fit-content;
 }
-.post *{
-    padding: 1rem 1.25rem;
+
+.post-main{
+     padding: 1rem 1.25rem;
 }
+
 .post h2{
     font-size:1rem;
     color:#070A1C;
@@ -92,13 +93,7 @@ textarea:focus, input:focus{
     text-decoration:underline;
 }
 
-.post div{
-    display:flex;
-    justify-content: center;
-    padding: 0;
-}
-
-.post div div {
+.post-main div div {
     display: flex !important;
     flex-wrap: wrap !important;
     flex-direction: row !important;
@@ -107,17 +102,27 @@ textarea:focus, input:focus{
     align-items: flex-start !important;
 }
 
-.post div div p {
+.post-main div div p {
     display: contents !important;
 }
 
-.post div div a {
+.post-main *{
+    padding: 1rem 1.25rem;
+}
+
+.post-main div{
+    display:flex;
+    justify-content: center;
+    padding: 0;
+}
+
+.post-main div div a {
     display: block !important;
     padding: 0 !important;
     margin: 0 !important;
 }
 
-.post div div a img {
+.post-main div div a img {
     width: 100% !important;
     height: 100% !important;
     display: block !important;
@@ -127,20 +132,117 @@ textarea:focus, input:focus{
 }
 
 /* максимум три картинки  */
-.post div div a.img-fix {
+.post-main div div a.img-fix {
     width: 17.72rem !important;
     height: 20.4rem !important;
     flex: 0 0 17.72rem !important;
 }
 
 /* більше трьох */
-.post div div a.img-big {
+.post-main div div a.img-big {
     flex: 0 0 calc((100% - 10px) / 2) !important;
     height: 20.43rem !important;
 }
 
 /* 3 в рядочок (маленькі) */
-.post div div a.img-small {
+.post-main div div a.img-small {
     flex: 0 0 calc((100% - 20px) / 3) !important;
     height: 25rem !important;
+}
+
+
+
+.post-header{
+    position: relative; /* ОБЯЗАТЕЛЬНО */
+    width:100%;
+    height:5.5rem;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid #CDCED2;
+    padding:0 1.25rem;
+}
+
+.post-header .avatar-post img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.post-signature img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.post-actions img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.post-header .avatar-post {
+    position: relative;
+    background-color: #ffffff;
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+}
+
+.post-header .user-details-post p {
+    margin:0;
+    font-size:14px;
+    font-weight:500;
+    line-height:1;
+    color:#070A1C;
+    font-family:var(--fontMedium);
+}
+
+.user-details-post{
+    align-items:center;
+    display:flex;
+    gap:0.75rem;
+    width:22.8rem;
+}
+
+.post-signature {
+    display: flex;
+    width: 220px;
+    height: 49px;
+}
+
+
+.post-actions {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.post-item {
+    display: flex;
+    gap: 0.625rem;
+}
+
+.user-details-post .status-indicator {
+    position: absolute;
+    top: 31px;
+    left: 31px;
+    width: 12px;
+    height: 12px;
+}
+
+.user-details-post .status-indicator img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
 }
