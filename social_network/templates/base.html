@@ -36,45 +36,43 @@
         {% block header %}{% endblock %}
     </header>
     <main>
-        {% block layout %}
-            <div class = "sidebar">
-                {% block sidebar %}
-                    <div class="sidebar-profile" onclick="location.href='{% url 'post' %}'">
-                        <div class="user-info">
-                            <div class="avatar-container"> 
-                                <div class="avatar-image">
-                                    <img src="{% static 'icons/avatar.jpg' %}" alt=""> 
-                                </div>
-                                <div class="status-indicator">
-                                    <img src="{% static 'icons/logo/online-status.png' %}" alt="">
-                                </div>
+        <div class = "sidebar">
+            {% block sidebar %}
+                <div class="sidebar-profile" onclick="location.href='{% url 'post' %}'">
+                    <div class="user-info">
+                        <div class="avatar-container"> 
+                            <div class="avatar-image">
+                                <img src="{% static 'icons/avatar.jpg' %}" alt=""> 
                             </div>
-                            <div class = "user-details">
-                                <h2 class="user-name">{{ user.nickname|default:"Lina Li" }}</h2>
-                                <p class="user-handle">@{{ user.username|default:"thelili" }}</p>
+                            <div class="status-indicator">
+                                <img src="{% static 'icons/logo/online-status.png' %}" alt="">
                             </div>
                         </div>
-                        <div class="stats-section">
-                            <div class="posts-stat">
-                                <h2>566</h2>
-                                <p>Дописи</p>
-                            </div>
-                            <div class="readers-stat">
-                                <h2>12.1K</h2>
-                                <p>Читачі</p>
-                            </div>
-                            <div class = "friends-stat" onclick="location.href='{% url 'friends' %}'">
-                                <h2>222</h2>
-                                <p>Друзі</p>
-                            </div>
+                        <div class = "user-details">
+                            <h2 class="user-name">{{ user.nickname|default:"Lina Li" }}</h2>
+                            <p class="user-handle">@{{ user.username|default:"thelili" }}</p>
                         </div>
                     </div>
-                {% endblock %}
-            </div>
-            <div class="content">
-                {% block content %} {% endblock %}
-            </div>
-        {% endblock %}
+                    <div class="stats-section">
+                        <div class="posts-stat">
+                            <h2>566</h2>
+                            <p>Дописи</p>
+                        </div>
+                        <div class="readers-stat">
+                            <h2>12.1K</h2>
+                            <p>Читачі</p>
+                        </div>
+                        <div class = "friends-stat" onclick="location.href='{% url 'friends' %}'">
+                            <h2>222</h2>
+                            <p>Друзі</p>
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
+        </div>
+        <div class="content">
+            {% block content %} {% endblock %}
+        </div>
     </main>
     {% block scripts %}
     <script src = "{% static 'js/links-color.js' %}"></script>

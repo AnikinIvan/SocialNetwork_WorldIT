@@ -8,43 +8,24 @@
 
 {% block title %} Чат {% endblock %}
 
-{% block layout %}  
-    <aside class = "left-sidebar">
-        <button class="create-chat">
-            <img src="{% static 'chat_app/icons/make_group_chat.svg' %}" alt="">
-        </button>
-        <div class="contacts">
-            <div class = "contacts-header">
-                <div>
-                    <img src="{% static 'icons/logo/people.svg' %}" alt="">
-                </div>
-                <h3>Контакти</h3>
-            </div>
-            <div class = "contacts-search">
-                <input type="text" placeholder="Пошук">
-                <div>
-                    <img src="{% static 'chat_app/icons/search.svg' %}" alt="">
-                </div>
-            </div>
-            <div class="users">
-                <div class="user">
-                    <div>
-                        <img src="{% static 'chat_app/icons/Jane Cooper.png' %}" alt="">
-                    </div>
-                    <p>Jane Cooper</p>
-                </div>
-            </div>
-        </div>
-    </aside>
-    <section class = "chat-main">
-        dfgdfgss
-    </section> 
-    <aside class = "right-sidebar">sdfgdsgdf</aside>
-
+{% block meta %} 
+    <meta name="csrf-token" content="{{ csrf_token }}">
 {% endblock %}
 
 
+{% block sidebar %}
+{% endblock %}
+
+{% block content %}
+    <div class = "chat-page">
+        {% include 'chat_app/particles/chat_contacts.html' %}
+        {% include 'chat_app/particles/chat_main.html' %}
+        {% include 'chat_app/particles/chat_sidebar.html' %}
+    </div>
+{% endblock %}
+
 
 {% block scripts %}
+    <script src = "{% static 'js/links-color.js' %}"></script>
     <script src="{% static 'chat_app/js/chat.js' %}"></script>
 {% endblock %}

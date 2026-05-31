@@ -1,10 +1,14 @@
-const csrfToken = document.querySelector("meta[name='csrf-token']").content;
-const friendsMainList = document.getElementById("friendsMainList");
+const _csrfMeta = document.querySelector("meta[name='csrf-token']");
+const csrfToken = _csrfMeta ? _csrfMeta.content : null;
+const friendsMainList = document.querySelector("#friendsMainList") || document.querySelector(".friends-main");
 
 async function handleFriendAction(actionButton) {
+  const headers = {};
+  if (csrfToken) headers["X-CSRFToken"] = csrfToken;
+
   const response = await fetch(actionButton.dataset.url, {
     method: "POST",
-    headers: { "X-CSRFToken": csrfToken },
+    headers,
   });
   const data = await response.json();
 
@@ -15,14 +19,17 @@ async function handleFriendAction(actionButton) {
     actionButton.textContent = data.label;
   }
   if (data.remove) {
-    actionButton.closest(".person-card").remove();
+    const removedCard = actionButton.closest(".card-user, .person-card");
+    if (removedCard) removedCard.remove();
   }
 }
 
 function addFriendToMain(friendHtml) {
-  const friendsCount = friendsMainList.querySelectorAll(".person-card").length;
+  if (!friendsMainList) return;
+
+  const friendsCount = friendsMainList.querySelectorAll(".card-user, .person-card").length;
   if (friendsCount < 6) {
-    friendsMainList.insertAdjacentHTML(friendHtml);
+    friendsMainList.insertAdjacentHTML('beforeend', friendHtml);
     connectFriendActionButtons(friendsMainList);
   }
 }

@@ -1,0 +1,59 @@
+{% load static %}
+
+<section class="chat-messages group-chats">
+    <div class="chat-block-header">
+        <div class="header-left">
+            <div class="header-icon-wrapper">
+                <img src="{% static 'icons/logo/chat.svg' %}" alt="">
+                <span class="notification-badge">2</span>
+            </div>    
+            <h3>Групові чати</h3>
+        </div>
+        <button class="view-all-btn">Дивитись всі</button>
+    </div>
+
+    <div class="chats-list">
+        {% for chat in group_chats %} 
+            <button type="button" class="chat-user-button" data-chat-id="{{ chat.id }}">
+                <div class="users-info-block">
+                    
+                    <div class="avatar-wrapper">
+                        <img src="{% static 'chat_app/icons/Jane Cooper.png' %}" alt="{{ chat.name }}">
+                    </div>
+                    
+                    <div class="message-meta-wrapper">
+                        <div class="meta-top">
+                            <h4 class="user-name">New group</h4>
+                            <span class="message-time">09:41</span>
+                        </div>
+                        <div class="meta-bottom">
+                            <p class="user-message">Чудово!</p>
+                        </div>
+                    </div>
+
+                </div>
+            </button>
+        {% empty %}
+        <button type="button" class="chat-user-button" data-chat-id="{{ chat.id }}">
+                <div class="users-info-block">
+                    
+                    <div class="avatar-wrapper">
+                        <img src="{% static 'chat_app/icons/Jane Cooper.png' %}" alt="{{ chat.name }}">
+                    </div>
+                    
+                    <div class="message-meta-wrapper">
+                        <div class="meta-top">
+                            <h4 class="user-name">New group</h4>
+                            <span class="message-time">09:41</span>
+                        </div>
+                        <div class="meta-bottom">
+                            <p class="user-message">Чудово!</p>
+                        </div>
+                    </div>
+
+                </div>
+            </button>
+            <!-- <p class="empty-chats">Порожньо</p> -->
+        {% endfor %}
+    </div>
+</section>

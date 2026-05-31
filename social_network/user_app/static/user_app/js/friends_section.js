@@ -82,16 +82,19 @@ function openMain() {
   updateActiveNav("main");
 }
 
-const observer = new IntersectionObserver(
-  async (entries) => {
-    if (entries[0].isIntersecting && hasNextPage && !isLoading) {
-      currentPage++;
-      await loadSectionPage(currentSection, currentPage);
-    }
-  },
-  { rootMargin: "50px" },
-);
-observer.observe(sectionSentinel);
+let observer = null;
+if (sectionSentinel) {
+  observer = new IntersectionObserver(
+    async (entries) => {
+      if (entries[0].isIntersecting && hasNextPage && !isLoading) {
+        currentPage++;
+        await loadSectionPage(currentSection, currentPage);
+      }
+    },
+    { rootMargin: "100px" },
+  );
+  observer.observe(sectionSentinel);
+}
 
 backMainButtons.forEach((button) => {
   button.addEventListener("click", () => {

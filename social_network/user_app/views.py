@@ -115,32 +115,51 @@ class FriendsView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
         current_user = self.request.user
+
         context["sections"] = {
-            "requests": {"title": "Запити", "users": get_friendship_requests(current_user)[:6]},
-            "recommendations" : {"title": "Рекомендації", "users": get_friendships_recommendations(current_user)[:6]},
-            "friends" : {"title": "Всі друзі", "users": get_friends(current_user)[:6]}
+            "requests": {
+                "title": "Запити",
+                "users": get_user_by_section(current_user, "requests")[:6]
+            },
+
+            "recommendations": {
+                "title": "Рекомендації",
+                "users": get_user_by_section(current_user, "recommendations")[:6]
+            },
+
+            "friends": {
+                "title": "Всі друзі",
+                "users": get_user_by_section(current_user, "friends")[:6]
+            }
         }
+
         return context
-    
+
+
+
 class FriendSectionView(LoginRequiredMixin, View):
     def get(self, request, section, *args, **kwargs):
-        if section == "requests":
-            users = get_friendship_requests(request.user)
-        elif section == "recommendations":
-            users = get_friendships_recommendations(request.user)
-        else:
-            users = get_friends(request.user)
+        users = get_user_by_section(request.user, section)
 
-        page_obj = Paginator(users, 6).get_page(request.GET.get("page", 1))
+        page_obj = Paginator(users, 6).get_page(
+            request.GET.get("page", 1)
+        )
 
-        html = render_to_string("user_app/particles/friends/friends_cards.html",
-                                {"users": page_obj.object_list, "section": section},
-                                request=request
-                                )
-        
-        return JsonResponse({"html": html, "has_next_page":page_obj.has_next()})
+        html = render_to_string(
+            "user_app/particles/friends/friends_cards.html",
+            {
+                "users": page_obj.object_list,
+                "section": section
+            },
+            request=request
+        )
 
+        return JsonResponse({
+            "html": html,
+            "has_next_page": page_obj.has_next()
+        })
 
 class FriendActionView(LoginRequiredMixin, View):
     login_url = reverse_lazy("auth")
@@ -161,7 +180,7 @@ class FriendActionView(LoginRequiredMixin, View):
         if action == "accept":
             action_result = accept_friend_request(current_user, other_user)
             action_result["friend_html"] = render_to_string(
-                "user_app/particles/friends/friend_cards.html",
+                "user_app/particles/friends/friends_cards.html",
                 {"users": [action_result["friend"]], "section": "friends"},
                 request=request
             )

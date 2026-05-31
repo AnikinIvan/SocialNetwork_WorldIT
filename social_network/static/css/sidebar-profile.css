@@ -64,7 +64,7 @@
 .user-name{
     font-size: 1.5rem;
     font-weight: 700;
-    font-style: bold;
+    /* font-style: bold; -- invalid, removed (bold is a font-weight) */
 }
 
 .stats-section p{
