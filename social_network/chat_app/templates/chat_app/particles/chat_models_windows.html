@@ -1,0 +1,12 @@
+{% load static %}
+<div class = "modal-window">
+    <button id="open-modal">откритие панели</button>
+    {% include 'chat_app/particles/modal_window/edit_group.html' %} 
+    {% include 'chat_app/particles/modal_window/edit_panel.html' %}
+    {% include 'chat_app/particles/modal_window/create_group.html' %}
+    {% include 'chat_app/particles/modal_window/select_contacts.html' %}
+</div>
+
+{% block scripts %}
+    <script src="{% static 'chat_app/js/modal_window.js' %}"></script>
+{% endblock %}
