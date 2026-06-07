@@ -15,3 +15,42 @@ class Chat(models.Model):
 
     def __str__(self):
         return self.name or f"Chat: {self.id}"
+
+    @property
+    def last_message(self):
+        return self.messages.order_by('-created_at').first()
+
+    @property
+    def last_message_text(self):
+        msg = self.last_message
+        return msg.text if msg else ''
+
+    @property
+    def last_message_time(self):
+        msg = self.last_message
+        return msg.created_at.strftime('%H:%M') if msg else ''
+
+    @property
+    def last_message_date(self):
+        msg = self.last_message
+        return msg.created_at.strftime('%d.%m.%Y') if msg else ''
+
+
+class Message(models.Model):
+    chat = models.ForeignKey(to=Chat, related_name='messages', on_delete=models.CASCADE)
+    sender = models.ForeignKey(to=user, on_delete=models.CASCADE)
+    text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.sender} @ {self.chat}: {self.text[:30]}"
+
+
+class Message(models.Model):
+    chat = models.ForeignKey(to=Chat, related_name='messages', on_delete=models.CASCADE)
+    sender = models.ForeignKey(to=user, on_delete=models.CASCADE)
+    text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.sender} @ {self.chat}: {self.text[:30]}"

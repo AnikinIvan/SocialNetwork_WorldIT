@@ -14,46 +14,27 @@
 
     <div class="chats-list">
         {% for chat in group_chats %} 
-            <button type="button" class="chat-user-button" data-chat-id="{{ chat.id }}">
+            <button type="button" class="chat-user-button" data-chat-id="{{ chat.id }}" data-chat-name="{{ chat.name|default:'New group' }}">
                 <div class="users-info-block">
-                    
                     <div class="avatar-wrapper">
-                        <img src="{% static 'chat_app/icons/Jane Cooper.png' %}" alt="{{ chat.name }}">
+                        <img src="{% static 'chat_app/icons/NP.png' %}" alt="{{ chat.name }}">
+                        <span class="status-dot online"></span>
                     </div>
-                    
                     <div class="message-meta-wrapper">
                         <div class="meta-top">
-                            <h4 class="user-name">New group</h4>
-                            <span class="message-time">09:41</span>
+                            <div class="chat-header-text">
+                                <h4 class="user-name">{{ chat.name|default:'New group' }}</h4>
+                            </div>
+                            <span class="message-time">{{ chat.last_message_time }}</span>
                         </div>
                         <div class="meta-bottom">
-                            <p class="user-message">Чудово!</p>
+                            <p class="user-message">{{ chat.last_message_text|default:'Почніть чат'|truncatechars:28 }}</p>
                         </div>
                     </div>
-
                 </div>
             </button>
         {% empty %}
-        <button type="button" class="chat-user-button" data-chat-id="{{ chat.id }}">
-                <div class="users-info-block">
-                    
-                    <div class="avatar-wrapper">
-                        <img src="{% static 'chat_app/icons/Jane Cooper.png' %}" alt="{{ chat.name }}">
-                    </div>
-                    
-                    <div class="message-meta-wrapper">
-                        <div class="meta-top">
-                            <h4 class="user-name">New group</h4>
-                            <span class="message-time">09:41</span>
-                        </div>
-                        <div class="meta-bottom">
-                            <p class="user-message">Чудово!</p>
-                        </div>
-                    </div>
-
-                </div>
-            </button>
-            <!-- <p class="empty-chats">Порожньо</p> -->
+            <p class="empty-chats">Порожньо</p>
         {% endfor %}
     </div>
 </section>

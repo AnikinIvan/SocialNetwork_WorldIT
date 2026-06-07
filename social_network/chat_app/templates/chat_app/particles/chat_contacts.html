@@ -18,12 +18,12 @@
         </div>
         <div class="users">
             {% for person in users %}
-            <div class="user">
+            <button type="button" class="user chat-user-button" data-chat-user="{{ person.id }}" data-chat-username="{{ person.email }}">
                 <div class="avatar-wrapper">
                     <img src="{% static 'chat_app/icons/Jane Cooper.png' %}" alt="{{ person.nickname }}">
                 </div>
                 <p class="user-name">{{ person.nickname }}</p>
-            </div>
+            </button>
             {% endfor %}
             <div class="user">
                 <div class="avatar-wrapper">

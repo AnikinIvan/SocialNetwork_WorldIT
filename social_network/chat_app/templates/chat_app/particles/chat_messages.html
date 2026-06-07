@@ -27,10 +27,10 @@
                             <div class="message-meta-wrapper">
                                 <div class="meta-top">
                                     <h4 class="user-name">{{ person.nickname|default:person.email }}</h4>
-                                    <span class="message-time">09:41</span>
+                                    <span class="message-time">{{ chat.last_message_time }}</span>
                                 </div>
                                 <div class="meta-bottom">
-                                    <p class="user-message">Привіт! Як справи ?</p>
+                                    <p class="user-message">{{ chat.last_message_text|truncatechars:28 }}</p>
                                 </div>
                             </div>
                         </div>

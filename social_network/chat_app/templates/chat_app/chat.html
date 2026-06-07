@@ -11,6 +11,7 @@
 
 {% block meta %} 
     <meta name="csrf-token" content="{{ csrf_token }}">
+    <meta name="current-user-id" content="{{ request.user.id }}">
 {% endblock %}
 
 
@@ -21,7 +22,6 @@
     <div class = "chat-page">
         {% include 'chat_app/particles/chat_contacts.html' %}
         {% include 'chat_app/particles/chat_main.html' %}
-        {% include 'chat_app/particles/chat_models_windows.html' %}
         {% include 'chat_app/particles/chat_sidebar.html' %}
     </div>
 {% endblock %}
