@@ -9,6 +9,7 @@
 
 {% block links %}
     <link rel="stylesheet" href="{% static 'css/create_post.css' %}">
+    <link rel="stylesheet" href="{% static 'css/edit_post.css' %}">
 {% endblock %}
 
 {% block modal-create-post %}
@@ -16,11 +17,10 @@
     {% include 'particles/create_tag.html' %}
 {% endblock modal-create-post %}
 
-{% block modal-create-tag %}
-{% endblock modal-create-tag %}
 
 {% block content %}
-    {% include 'particles/content_post.html'   %}
+    {% include 'particles/content_post.html' %}
+    {% include 'particles/edit_post.html' %}
 {% endblock content %}
 
 {% block scripts %}

@@ -1,0 +1,13 @@
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'user_app/css/confirm_modal.css' %}">
+{% endblock %}
+
+
+<div>
+    <h2>Підтвердити дію</h2>
+    <p>Ви дійсно хочете видалити користувача?</p>
+    <button><img src="{% static 'icons/modal/cancel_btn.svg' %}" alt=""></button>
+    <button><img src="{% static 'icons/modal/confirm_btn.svg' %}" alt=""></button>
+</div>
