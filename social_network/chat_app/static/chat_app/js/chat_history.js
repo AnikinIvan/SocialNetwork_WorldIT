@@ -1,6 +1,16 @@
-function formatTime(dateString) {
-  const date = new Date(dateString)
-  return date.toLocaleTimeString('uk-UA', { hour: '2-digit', minute: '2-digit' })
+function formatTime(value) {
+  if (!value) return null
+
+  const date = new Date(value)
+
+  if (Number.isNaN(date.getTime())) {
+    return null
+  }
+
+  return date.toLocaleTimeString(undefined, {
+    hour: '2-digit',
+    minute: '2-digit',
+  })
 }
 
 function formatDate(dateString) {
@@ -16,16 +26,22 @@ function createDateDivider(dateString) {
 }
 
 /**
- * Создаёт пузырь сообщения.
  * @param {string} text
  * @param {boolean} isSelf
  * @param {string|null} createdAt
  * @param {string} senderName
- * @param {string[]} images  - массив URL картинок
- * @param {boolean} isRead   - прочитано ли собеседником (только для своих сообщений)
+ * @param {string[]} images
+ * @param {boolean} isRead   
  * @param {number|null} messageId
  */
 function createMessageBubble(text, isSelf = false, createdAt = null, senderName = '', images = [], isRead = false, messageId = null) {
+  console.log('create bubble:', {
+    text,
+    isSelf,
+    messageId,
+    isRead,
+  })
+
   const row = document.createElement('div')
   row.className = `message-row${isSelf ? ' self' : ' incoming'}`
   if (messageId) row.dataset.messageId = messageId
@@ -33,7 +49,6 @@ function createMessageBubble(text, isSelf = false, createdAt = null, senderName 
   const bubble = document.createElement('div')
   bubble.className = `chat-bubble${isSelf ? ' self' : ' incoming'}`
 
-  // ── Картинки ──
   if (images && images.length > 0) {
     const imgGrid = document.createElement('div')
     imgGrid.className = 'bubble-images'
@@ -47,7 +62,6 @@ function createMessageBubble(text, isSelf = false, createdAt = null, senderName 
     bubble.appendChild(imgGrid)
   }
 
-  // ── Текст + мета (время + галочка) на одной строке ──
   const contentRow = document.createElement('div')
   contentRow.className = 'bubble-content-row'
 
@@ -65,7 +79,6 @@ function createMessageBubble(text, isSelf = false, createdAt = null, senderName 
     contentRow.appendChild(textEl)
   }
 
-  // Мета: время и галочка
   const metaEl = document.createElement('span')
   metaEl.className = 'bubble-meta'
 
@@ -76,23 +89,20 @@ function createMessageBubble(text, isSelf = false, createdAt = null, senderName 
     metaEl.appendChild(timeEl)
   }
 
-  if (isSelf) {
-    const tick = document.createElement('img')
-    tick.className = `see-indicator${isRead ? ' seen' : ''}`
-    tick.src = '/static/chat_app/icons/see_indicator.svg'
-    tick.alt = ''
+const tick = document.createElement('img')
+tick.className = `see-indicator${isRead ? ' seen' : ''}`
+tick.src = '/static/chat_app/icons/see_indicator.svg'
+tick.alt = ''
 
-    if (messageId) {
-      tick.dataset.messageId = messageId
-    }
+if (messageId) {
+  tick.dataset.messageId = String(messageId)
+}
 
-    metaEl.appendChild(tick)
-  }
+metaEl.appendChild(tick)
 
   contentRow.appendChild(metaEl)
   bubble.appendChild(contentRow)
 
-  // Аватар для входящих
   if (!isSelf) {
     const avatar = document.createElement('div')
     avatar.className = 'bubble-avatar'
@@ -107,10 +117,15 @@ function createMessageBubble(text, isSelf = false, createdAt = null, senderName 
 function markMessageSeen(messageId) {
   const tick = document.querySelector(`.see-indicator[data-message-id="${messageId}"]`)
 
+  console.log('mark seen:', messageId)
+  console.log('found tick:', tick)
+
   if (tick) {
     tick.classList.add('seen')
   }
 }
+
+window.markMessageSeen = markMessageSeen
 
 function renderMessages(chatWindow, messages, currentUserId) {
   if (!chatWindow) return
@@ -133,14 +148,14 @@ function renderMessages(chatWindow, messages, currentUserId) {
 
     const isSelf = message.sender_id === currentUserId
     const bubble = createMessageBubble(
-      message.message || message.text || '',
-      isSelf,
-      message.created_at,
-      message.sender_name,
-      message.images || [],
-      message.is_read || false,
-      message.id || null
-    )
+  message.message || message.text || '',
+  isSelf,
+  message.created_at,
+  message.sender_name,
+  message.images || [],
+  message.is_read || false,
+  message.id || message.message_id || null
+)
     chatWindow.appendChild(bubble)
   })
 
@@ -150,3 +165,4 @@ function renderMessages(chatWindow, messages, currentUserId) {
 window.createMessageBubble = createMessageBubble
 window.markMessageSeen = markMessageSeen
 window.renderMessages = renderMessages
+window.formatTime = formatTime

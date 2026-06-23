@@ -17,18 +17,24 @@
 
     socket.onmessage = event => {
       const data = JSON.parse(event.data)
+      console.log('chat event:', data)
 
       if (data.type === 'chat_message') {
         window.ChatUI.addMessage(data)
 
         if (data.chat_id) {
-          window.ChatUI.updateChatPreview(data.chat_id, data.message || 'Фото', data.created_at)
+          window.ChatUI.updateChatPreview(
+            data.chat_id,
+            data.message || 'Фото',
+            data.created_at,
+            data.sender_id
+          )
         }
-
+      
         if (data.sender_id !== window.ChatUI.state.currentUserId) {
           markRead()
         }
-
+      
         return
       }
 
@@ -36,7 +42,7 @@
         window.markMessageSeen?.(data.message_id)
         return
       }
-      
+
       if (data.sender_id !== window.ChatUI.state.currentUserId) {
         markRead()
       }
