@@ -94,17 +94,11 @@
     border-radius:50%;
 }
 
-.status-div{
-    width:1.1rem;
-    height:1.1rem;
-    border-radius:50%;
-}
-
 .avatar-img{
     border-radius:50%;
 } 
 
-.status-div{
+.status-indicator{
     position: absolute;
     width: 1.125rem;
     height: 1.125rem;

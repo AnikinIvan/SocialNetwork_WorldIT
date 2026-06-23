@@ -57,11 +57,20 @@ form button img, form span img {
     height: 41.8rem;
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 1.5rem 2.75rem;
+    padding: 1.5rem 2.75rem 2.75rem 2.75rem;
     background-color: white;
     border-radius: 1.25rem;
 }
 
+.section-inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 42.81rem;
+    height: 31.375rem;
+    padding: 1.5rem 0;
+    box-sizing: border-box;
+}
 
 #modal-create-post {
     position: fixed;
@@ -173,7 +182,7 @@ label {
 
 .create-post-forms h2{
     font-size: 2.125rem;
-    font-family: var(--fontRegular);
+    font-family: var(--fontMedium);
     font-weight: 500;
     color: rgba(7, 10, 28, 1);
 }

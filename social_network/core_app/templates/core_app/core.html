@@ -7,6 +7,7 @@
 
 {% block links %}
     <link rel="stylesheet" href="{% static 'css/core.css' %}">
+    <link rel="stylesheet" href="{% static 'css/modal.css' %}">
 {% endblock %}
 
 {% block sidebar %}
@@ -19,40 +20,26 @@
             </span>
             <a href="{% url 'friends' %}">Дивитись всі</a>
         </div>
-        <div class="followers">
+        <div class="followers" onclick="location.href='{% url 'friends' %}'">
             <div class="info-followers">
-                <div class = "follower">
-                    <div>
-                        <img class="avatar-follower" src="{% static 'icon/Follower1.jpg' %}" alt="">
-                    </div>
-                    <span class="info-follower">
-                        <p>Yehor Aung</p>
-                        <p class = "follower-followers">4.3к підписників</p>
-                    </span>
-                </div>
                 
-                <div class = "follower">
-                    <div>
-                        <img class="avatar-follower" src="{% static 'icon/Follower2.jpg' %}" alt="">
+               {% for follower in followers %}
+                    <div class="follower">
+                        <div>
+                            <img class="avatar-follower" src="{% static 'icon/Follower2.jpg' %}" alt="">
+                        </div>
+                        <span class="info-follower">
+                            <p>{{ follower.nickname }}</p>
+                            <p class="follower-followers">Запит на дружбу</p>
+                        </span>
                     </div>
-                    <span class="info-follower">
-                        <p>Ann Ann</p>
-                        <p class = "follower-followers">1.6к підписників</p>
-                    </span>
-                </div>
-                <div class = "follower">
-                    <div>
-                        <img class="avatar-follower" src="{% static 'icon/Follower3.jpg' %}" alt="">
+                {% empty %}
+                    <p>Немає запитів на дружбу</p>
+                {% endfor %}
                     </div>
-                    <span class="info-follower">
-                        <p>Yeugen Jenua</p>
-                        <p class = "follower-followers">10.3к підписників</p>
-                    </span>
-                </div>                        
-            </div>
         </div>
     </div>
-    <div class="message-people">
+    <div class="message-people" onclick="location.href='{% url 'chat' %}'">
         <div class="messages">
                 <span>
                     <img src="{% static 'icons/logo/chat.svg' %}" alt="">
@@ -63,58 +50,41 @@
             
         <div class="message-user">
             <div class="user-message">
-                
-                <div class = "message">
-                    <div class="avatar-friends"> 
-                        <img class="avatar-friends" src="{% static 'icon/user1.jpg' %}" alt="">
-                    </div>
-                    <span class="message-friends">
-                        <span class = "nickname-message">
-                            <p>Mona Lisa</p>
-                            <p>Привіт! Як справи ?</p>
-                        </span>
-                        <p class = "time">09:41</p>
-                    </span>
-                </div>
-
-                <div class = "message">
-                     <div class="avatar-friends"> 
-                        <img class="avatar-friends" src="{% static 'icon/user2.jpg' %}" alt="">
-                    </div>
-                    <span class="message-friends">
-                        <span class = "nickname-message">
-                            <p>Ann Ti</p>
-                            <p>Привіт!</p>
-                        </span>
-                        <p class = "time">25.04.2025</p>
-                    </span>
-                 </div>
-
-                <div class = "message">
-                    <div class="avatar-friends"> 
-                        <img class="avatar-friends" src="{% static 'icon/user3.jpg' %}" alt="">
-                    </div>
-                   <span class="message-friends">
-                        <span class = "nickname-message">
-                            <p>Ness Ty</p>
-                            <p>Привіт!</p>
-                        </span>
-                       <p class = "time">25.04.2025</p>
-                   </span>
-                </div>
+                {% for chat in personal_chats %} 
+                    {% for person in chat.users.all %} 
+                        {% if person.id != request.user.id %}
+                            <div class = "message">
+                                <div class="avatar-friends"> 
+                                    <img class="avatar-friends" src="{% static 'icon/user1.jpg' %}" alt="">
+                                </div>
+                                <span class="message-friends">
+                                    <span class = "nickname-message">
+                                        <p>{{ person.nickname|default:person.email }}</p>
+                                        <p>{{ chat.last_message_text|truncatechars:28 }}</p> 
+                                    </span>
+                                    <p class = "time">{{ chat.last_message_time }}</p>
+                                </span>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
             </div>
         </div>
     </div>
 {% endblock %}
 
 {% block content %}
+    {% if show_details_modal %}
+        {% include 'core_app/modal_details.html' %}
+    {% endif %}
 
-   {% include 'particles/content_post.html' %}
+ 
+    {% include 'particles/content_post.html' %}
 {% endblock %}
 
 
 {% block script %}
-    <script type="module" src="{% static 'core_app/js/modal.js' %}"></script>
+    <script src="{% static 'js/modal_details.js' %}"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src = "{% static 'post_app/js/imageView.js' %}"></script> 
     <script src = "{% static 'post_app/js/imageSize.js' %}"></script>

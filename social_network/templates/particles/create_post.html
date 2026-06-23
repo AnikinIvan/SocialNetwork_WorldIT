@@ -7,30 +7,37 @@
     <form action="{% url 'post_create' %}" class = "create-post-forms"  id="post-create-form" method="post" enctype="multipart/form-data">
         <span class="close-modal"><img src="{% static '/icons/modal/cross.svg' %}" alt=""></span>
         <h2>Створення публікації</h2>
-            <label>Назва публікації</label>
-            {{ form_create_post.title.errors }}
-            {{ form_create_post.title }}
-            <label>Тема публікації</label>
-            {{ form_create_post.topic.errors }}
-            {{ form_create_post.topic }}
+        <div class="section-inputs">
+            <div>
+                <label>Назва публікації</label>
+                {{ form_create_post.title.errors }}
+                {{ form_create_post.title }}
+            </div>
+            <div>
+                <label>Тема публікації</label>
+                {{ form_create_post.topic.errors }}
+                {{ form_create_post.topic }}
+            </div>
 
-            <div class="field-with-button">
-                <div class="tags-wrapper">
-                    {{ form_create_post.tags }}
+                <div class="field-with-button">
+                    <div class="tags-wrapper">
+                        {{ form_create_post.tags }}
+                    </div>
+                    <button class="plus-button" type="button" id="tag-button">
+                        <img class="plus-image" src="{% static 'icons/modal/plus.svg' %}" alt="">
+                    </button>
                 </div>
-                <button class="plus-button" type="button" id="tag-button">
-                    <img class="plus-image" src="{% static 'icons/modal/plus.svg' %}" alt="">
-                </button>
-            </div>
-            {{ form_create_post.content.errors }}
-            {{ form_create_post.content }}
-        
-            <div class="field-with-button">
-                <label for="{{ form_create_post.links.id_for_label }}">Посилання</label>
-            </div>
+                {{ form_create_post.content.errors }}
+                {{ form_create_post.content }}
+            <div>
+                <div class="field-with-button">
+                    <label for="{{ form_create_post.links.id_for_label }}">Посилання</label>
+                </div>
 
-            <div class="link-field-row">
-                <div class="links-list" id="links-list"></div>
+                <div class="link-field-row">
+                    <div class="links-list" id="links-list"></div>
+                </div>
+            </div>
             </div>
 
             <div class="bottom-buttons">

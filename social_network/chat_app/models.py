@@ -5,13 +5,12 @@ from django.contrib.auth import get_user_model
 user = get_user_model()
 
 class Chat(models.Model):
-    # 
-    users = models.ManyToManyField(to= user, related_name= "chats")
-    admin = models.ForeignKey(to= user, blank= True, null= True, on_delete= models.CASCADE)
-    
-    name = models.CharField(max_length= 30, blank= True, null= True)
-    is_group = models.BooleanField(default= False)
-    avatar = models.ImageField(upload_to= "chat_app/chat_avatars/", blank= True, null= True)
+    users = models.ManyToManyField(to=user, related_name="chats")
+    admin = models.ForeignKey(to=user, blank=True, null=True, on_delete=models.CASCADE)
+
+    name = models.CharField(max_length=30, blank=True, null=True)
+    is_group = models.BooleanField(default=False)
+    avatar = models.ImageField(upload_to="chat_app/chat_avatars/", blank=True, null=True)
 
     def __str__(self):
         return self.name or f"Chat: {self.id}"
@@ -35,15 +34,9 @@ class Chat(models.Model):
         msg = self.last_message
         return msg.created_at.strftime('%d.%m.%Y') if msg else ''
 
-
-class Message(models.Model):
-    chat = models.ForeignKey(to=Chat, related_name='messages', on_delete=models.CASCADE)
-    sender = models.ForeignKey(to=user, on_delete=models.CASCADE)
-    text = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"{self.sender} @ {self.chat}: {self.text[:30]}"
+    def unread_count_for(self, user_obj):
+        """Кол-во непрочитанных сообщений для конкретного пользователя."""
+        return self.messages.exclude(sender=user_obj).exclude(read_by=user_obj).count()
 
 
 class Message(models.Model):
@@ -51,6 +44,16 @@ class Message(models.Model):
     sender = models.ForeignKey(to=user, on_delete=models.CASCADE)
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+    # Кто прочитал это сообщение
+    read_by = models.ManyToManyField(to=user, related_name='read_messages', blank=True)
 
     def __str__(self):
         return f"{self.sender} @ {self.chat}: {self.text[:30]}"
+
+    def is_read_by(self, user_obj):
+        return self.read_by.filter(pk=user_obj.pk).exists()
+
+
+class MessageImage(models.Model):
+    message = models.ForeignKey(Message, on_delete=models.CASCADE, related_name="images")
+    image = models.ImageField(upload_to='images/chat_images/')

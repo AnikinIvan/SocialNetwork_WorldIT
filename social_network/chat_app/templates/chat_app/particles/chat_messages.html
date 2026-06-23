@@ -4,12 +4,14 @@
     <div class="chat-block-header">
         <div class="header-left">
             <div class="header-icon-wrapper">
-                <img src="{% static 'icons/logo/chat.svg' %}" alt="">
-                <span class="notification-badge">2</span>
+                <img src="{% static 'chat_app/icons/chat.svg' %}" alt="">
+                <div class="notification-badge">
+                    <img src="{% static 'icons/logo/red_indicator.svg' %}" alt="">
+                    <span>2</span>
+                </div>
             </div>    
             <h3>Повідомлення</h3>
         </div>
-        <button class="view-all-btn">Дивитись всі</button>
     </div>
 
     <div class="chats-list">
@@ -19,10 +21,13 @@
                     
                     <button type="button" class="chat-user-button" data-chat-user="{{ person.id }}" data-chat-username="{{ person.email }}">
                         <div class="users-info-block">
-                            <div class="avatar-wrapper">
-                                <img src="{% static 'chat_app/icons/Jane Cooper.png' %}" alt="{{ person.nickname }}">
-                                <span class="status-dot online"></span>
-                            </div>
+                     <div class="avatar-wrapper">
+                        
+                        <img src="{% static 'chat_app/icons/Jane Cooper.png' %}" alt="{{ person.nickname }}">
+                    
+                            <div class="status-indicator" data-user-id="{{ person.id }}"></div>
+                    </div>
+
                             
                             <div class="message-meta-wrapper">
                                 <div class="meta-top">
@@ -39,7 +44,7 @@
                 {% endif %}
             {% endfor %}
         {% empty %}
-        <button type="button" class="chat-user-button">
+        <button type="button" class="chat-user-button" >
             <div class="users-info-block">
                 <div class="avatar-wrapper">
                     <img src="{% static 'chat_app/icons/Jane Cooper.png' %}" alt="{{ person.nickname }}">

@@ -80,16 +80,3 @@
 .avatar-container {
     position: relative;
 }
-
-.status-indicator{
-    position: absolute;
-    width: 1.125rem;
-    height: 1.125rem;
-    left: 4.375rem;
-    top: 4.375rem;
-}
-
-.status-indicator img {
-    width: 100%;
-    height: 100%;
-}

@@ -1,37 +1,34 @@
 {% load static %}
-
 {% for person in users %}
     <div class="card-user">
         <span>
             <div class="avatar-div">
                 <img class="avatar-img" src="{% static 'icons/avatar.jpg' %}" alt="">
             </div>
-            <div class="status-div">
-                <img src="{% static 'icons/logo/offline-status.svg' %}" alt="">
-            </div>
+            <div class="status-indicator" data-user-id="{{ person.id }}"></div>
         </span>
         <h3>{{ person.nickname }}</h3>
         <h4>@{{ person.username }}</h4>
-        <div class="buttons">          
+        <div class="buttons">
             {% if section == "requests" %}
                 <button class="action-button" data-url="{% url 'friend_action' person.id 'accept' %}">
                     <img src="{% static 'user_app/icon/friends/confirm_btn.svg' %}" alt="">
                 </button>
-                <button class="action-button" data-url="{% url 'friend_action' person.id 'delete' %}">
+                <button class="action-button" data-confirm="true" data-url="{% url 'friend_action' person.id 'delete' %}">
                     <img src="{% static 'user_app/icon/friends/delete_btn.svg' %}" alt="">
                 </button>
             {% elif section == "recommendations" %}
                 <button class="action-button" data-url="{% url 'friend_action' person.id 'add' %}">
                     <img src="{% static 'user_app/icon/friends/add_btn.svg' %}" alt="">
                 </button>
-                <button class="action-button" data-url="{% url 'friend_action' person.id 'dismiss' %}">
+                <button class="action-button" data-confirm="true" data-url="{% url 'friend_action' person.id 'dismiss' %}">
                     <img src="{% static 'user_app/icon/friends/delete_btn.svg' %}" alt="">
                 </button>
             {% else %}
                 <button class="action-button" data-url="{% url 'friend_action' person.id 'add' %}">
                     <img src="{% static 'user_app/icon/friends/message_btn.svg' %}" alt="">
                 </button>
-                <button class="action-button" data-url="{% url 'friend_action' person.id 'delete' %}">
+                <button class="action-button" data-confirm="true" data-url="{% url 'friend_action' person.id 'delete' %}">
                     <img src="{% static 'user_app/icon/friends/delete_btn.svg' %}" alt="">
                 </button>
             {% endif %}

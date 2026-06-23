@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} {{ profile_user.nickname }} {% endblock %}
+{% block content %}
+<div class="profile-page">
+    <div class="profile-header">
+        <img class="avatar-img" src="{% static 'icons/avatar.jpg' %}" alt="">
+        <div>
+            <h2>{{ profile_user.nickname }}</h2>
+            <h4>@{{ profile_user.username }}</h4>
+        </div>
+    </div>
+
+    <div class="profile-posts">
+        <!-- TODO: підключити реальні пости profile_user,
+             коли буде відома модель/апп постів -->
+        <p class="empty-section-message">Постів ще немає</p>
+    </div>
+</div>
+{% endblock %}

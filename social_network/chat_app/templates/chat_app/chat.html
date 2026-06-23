@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 {% load static %}
 
@@ -5,6 +6,14 @@
 {% block links %}
     <link rel="stylesheet" href="{% static 'chat_app/css/chat.css' %}">
     <link rel="stylesheet" href="{% static 'chat_app/css/modal.css' %}">
+    <link rel="stylesheet" href="{% static 'chat_app/css/modals/create_group.css' %}">
+    <link rel="stylesheet" href="{% static 'chat_app/css/modals/panel.css' %}">
+    <link rel="stylesheet" href="{% static 'chat_app/css/modals/create_group.css' %}">
+    <link rel="stylesheet" href="{% static 'chat_app/css/modals/select_contacts.css' %}">
+    <link rel="stylesheet" href="{% static 'chat_app/css/sidebars/groups.css' %}">
+    <link rel="stylesheet" href="{% static 'chat_app/css/sidebars/main.css' %}">
+    <link rel="stylesheet" href="{% static 'chat_app/css/sidebars/messages.css' %}">
+    <link rel="stylesheet" href="{% static 'chat_app/css/sidebars/contacts.css' %}">
 {% endblock %}
 
 {% block title %} Чат {% endblock %}
@@ -28,7 +37,15 @@
 
 
 {% block scripts %}
+
+    <script src="{% static 'chat_app/js/chat_history.js' %}"></script>
+    <script src="{% static 'chat_app/js/uread_messages.js' %}"></script>
+    <script src="{% static 'chat_app/js/online_status.js' %}"></script> 
+    <script src="{% static 'chat_app/js/chat_ui.js' %}"></script> 
+    
+    <script src="{% static 'chat_app/js/message_images.js' %}"></script>
     <script src = "{% static 'js/links-color.js' %}"></script>
     <script src="{% static 'chat_app/js/chat.js' %}"></script>
     <script src="{% static 'chat_app/js/modal_window.js' %}"></script>
+    <script src = "{% static 'chat_app/js/panel.js' %}"></script>
 {% endblock %}

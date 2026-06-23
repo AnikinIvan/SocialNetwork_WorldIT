@@ -1,5 +1,4 @@
 document.querySelectorAll('.otp-input input').forEach((input, index, inputs) => {
-  // กรองให้กรอกเฉพาะตัวเลข
   input.addEventListener('input', (e) => {
     const value = e.target.value;
     if (!/^\d$/.test(value)) {

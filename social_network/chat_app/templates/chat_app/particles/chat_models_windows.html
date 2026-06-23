@@ -1,7 +1,9 @@
-{% load static %}
+{% load static %} 
+<div class = "edit-panel">
+    {% include 'chat_app/particles/modal_window/edit_panel.html' %}
+</div>
 <div class="modal-window hidden">
     {% include 'chat_app/particles/modal_window/edit_group.html' %} 
-    {% include 'chat_app/particles/modal_window/edit_panel.html' %}
     {% include 'chat_app/particles/modal_window/create_group.html' %}
     {% include 'chat_app/particles/modal_window/select_contacts.html' %}
 </div>

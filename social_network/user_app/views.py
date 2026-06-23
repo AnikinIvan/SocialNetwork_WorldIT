@@ -165,24 +165,26 @@ class FriendActionView(LoginRequiredMixin, View):
     login_url = reverse_lazy("auth")
 
     def post(self, request, other_user_id, action, *args, **kwargs):
-        other_user = User.objects.get(id=other_user_id)
+        other_user = get_object_or_404(User, id=other_user_id)  # на 404 вместо 500
         current_user = request.user
 
         if action == "add":
             return JsonResponse(add_friend_request(current_user, other_user))
-        
+
         if action == "dismiss":
             return JsonResponse(dismiss_recommendation(current_user, other_user))
-        
+
         if action == "delete":
             return JsonResponse(delete_friendship(current_user, other_user))
-        
+
         if action == "accept":
-            action_result = accept_friend_request(current_user, other_user)
-            action_result["friend_html"] = render_to_string(
-                "user_app/particles/friends/friends_cards.html",
-                {"users": [action_result["friend"]], "section": "friends"},
-                request=request
-            )
-            del action_result["friend"]
-            return JsonResponse(action_result)
+            return JsonResponse(accept_friend_request(current_user, other_user))
+        
+class UserProfileView(LoginRequiredMixin, TemplateView):
+    template_name = 'user_app/profile.html'
+    login_url = reverse_lazy('auth')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['profile_user'] = get_object_or_404(User, id=self.kwargs['user_id'])
+        return context

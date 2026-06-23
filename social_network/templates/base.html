@@ -44,9 +44,7 @@
                             <div class="avatar-image">
                                 <img src="{% static 'icons/avatar.jpg' %}" alt=""> 
                             </div>
-                            <div class="status-indicator">
-                                <img src="{% static 'icons/logo/online-status.png' %}" alt="">
-                            </div>
+                            <div class="status-indicator" data-user-id="{{ request.user.id }}"></div>
                         </div>
                         <div class = "user-details">
                             <h2 class="user-name">{{ user.nickname|default:"Lina Li" }}</h2>
@@ -75,8 +73,9 @@
         </div>
     </main>
     {% block scripts %}
-    <script src = "{% static 'js/links-color.js' %}"></script>
-    <script src="{% static 'user_app/js/friends_section.js' %}"></script>
+        <script src = "{% static 'js/links-color.js' %}"></script>
+        <script src="{% static 'user_app/js/friends_section.js' %}"></script>
     {% endblock %}
+    <script src="{% static 'chat_app/js/presence.js' %}"></script> 
 </body>
 </html>

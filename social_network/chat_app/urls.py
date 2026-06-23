@@ -7,4 +7,5 @@ urlpatterns = [
     path(route="chat_with/<int:user_id>/", view=ChatWithView.as_view(), name="chat_with"),
     path(route="chat_open/<int:chat_id>/", view=ChatOpenView.as_view(), name="chat_open"),
     path(route="group/create/", view=CreateGroupChatView.as_view(), name="chat_group_create"),
+    path(route="upload_images/<int:chat_id>/", view=MessageImagesUploadView.as_view(), name='message_images_upload')
 ]

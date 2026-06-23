@@ -1,0 +1,367 @@
+
+.select-members {
+    display: flex;
+    flex-direction: column;
+    width: min(100%, 30.625rem);
+    max-height: calc(100vh - 100px);
+    border-radius: 20px;
+    background-color: #FFFFFF;
+    padding: 24px 28px;
+    gap: 1.5rem;
+    overflow-y: auto;
+    box-shadow: 0 24px 72px rgba(0, 0, 0, 0.18);
+}
+
+h2{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 2.43rem;
+    align-items: center;
+    font-size: 2.125rem;
+    font-weight: 500;
+    font-family: var(--fontMedium);
+}
+
+.select-members .search {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 2.75rem;
+    gap: 10px;
+    border-radius: 14px;
+    border: 2px solid #CDCED2;
+    padding: 9px 1rem;
+    background-color: #FFFFFF;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.select-members .search:focus-within {
+    border-color: #CDCED2;
+    box-shadow: 0 0 0 6px rgba(243, 198, 35, 0.16);
+}
+
+.select-members .selected-count,
+.select-members .leter-start {
+    width: 100%;
+    margin: 0;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #18181B;
+}
+
+.select-members .selected-count {
+    padding-left: 0.5rem;
+    letter-spacing: 0.01em;
+    margin-top: 0.25rem;
+}
+
+.select-members section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.select-members .leter-start {
+    display: inline-flex;
+    align-items: center;
+    height: auto;
+    padding-left: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #6B7280;
+    text-transform: uppercase;
+}
+
+.search input{
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    height: 1.37rem;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: var(--fontRegular);
+    color: #111827;
+}
+
+.search input::placeholder {
+    color: #9CA3AF;
+    opacity: 1;
+}
+
+.search img{
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.select-members::-webkit-scrollbar {
+    width: 8px;
+}
+
+.select-members::-webkit-scrollbar-thumb {
+    background: rgba(124, 58, 237, 0.3);
+    border-radius: 999px;
+}
+
+.select-members::-webkit-scrollbar-track {
+    background: #F7F5FF;
+}
+
+p{
+    width: 100%;
+    max-width: 100%;
+    height: 1rem;
+    font-weight: 500;
+    font-size: 14px;
+    font-family: var(--fontMedium);
+    color: #81818D;
+}
+
+.select-members .header{
+    display:flex;
+    width:100%;
+    height:fit-content;
+    justify-content:flex-end;
+    align-items:flex-start;
+    cursor: pointer;
+}
+
+.avatar-member{
+    position: relative;
+    width: 2.875rem;
+    height: 2.875rem;
+    flex-shrink: 0;
+}
+
+.avatar-member img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.name-member {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 1rem;
+}
+
+.name-member p{
+    margin: 0;
+    flex: 1;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: var(--fontMedium);
+    color: #111827;
+}
+
+.name-member input{
+    width: 1.25rem;
+    height: 1.25rem;
+    accent-color: #7F56D9;
+}
+
+.letter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.member {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem 0;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.member:last-child {
+    border-bottom: none;
+}
+
+.member:hover {
+    background-color: transparent;
+}
+
+.select-members .add-members {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.select-members section{
+    width:25.125rem;
+}
+
+.select-members .action-buttons button img{
+    width: 100%;
+    height: 100%;
+}
+
+.hidden-file-input {
+    display: none;
+}
+
+#group-photo-preview {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 50%;
+    background-color: #4A364A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-family: var(--fontMedium);
+    font-size: 1rem;
+    flex-shrink: 0;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
+
+#group-photo-preview.photo-selected {
+    border: 2px solid #F3C623;
+}
+
+.group-photo-initials {
+    user-select: none;
+}
+
+.name-member{
+    display:flex;
+    flex-direction:row;
+}
+
+.status{
+    position:absolute;
+    width:12px;
+    height:12px;
+    right:-2px;
+    bottom:-2px;
+    border: 2px solid #FFFFFF;
+    border-radius: 50%;
+    background-color: #22C55E;
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.7);
+}
+
+.status img {
+    width:100%;
+    height:100%;
+}
+
+.name-member input[type="checkbox"]{
+    -webkit-appearance: none;
+    appearance: none;
+    display: inline-block;
+    width: 1.4rem;
+    height: 1.4rem;
+    background-color: #FFFFFF;
+    cursor: pointer;
+    background-image: url("/static/chat_app/icons/checkbox-off.svg");
+    background-size: 1.2rem 1.2rem;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.name-member input[type="checkbox"]:checked{
+    background-image: url("/static/chat_app/icons/checkbox-on.svg");
+    border-color: #7F56D9;
+    background-color: #FFFFFF;
+}
+
+.name-member input:focus, .name-member input:active, .name-member input:focus-visible{
+    border: none;
+    outline: none;
+}
+
+.participants-list {
+  max-width: 500px;
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+.list-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #0b1325;
+  margin-bottom: 20px;
+}
+
+.member-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.member-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.avatar-upload-label {
+  width: 52px;
+  height: 52px;
+  background-color: #4a3b4e; /* Колір як на вашому скріншоті */
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+
+.avatar-file-input {
+  display: none; /* Ховаємо стандартний інпут файлів */
+}
+
+.avatar-upload-label img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.member-name {
+  font-size: 16px;
+  font-weight: 500;
+  color: #0b1325;
+  margin: 0;
+}
+
+.trash-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  color: #0b1325;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.trash-button:hover {
+  background-color: #f1f3f5;
+  color: #e03131; /* Зміна кольору смітника на червоний при наведенні */
+}
+
+.trash-icon {
+  width: 20px;
+  height: 20px;
+}

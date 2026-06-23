@@ -12,6 +12,7 @@ document.getElementById("register-form").addEventListener(
 
         fetch(form.action, {
             method: "POST", 
+            credentials: 'same-origin',
             headers: {
                 "X-CSRFToken": getCSRFToken(),
                 "X-Requested-With": "XMLHttpRequest",
@@ -50,6 +51,7 @@ document.getElementById("login-form").addEventListener(
 
         fetch(form.action, {
             method: "POST", 
+            credentials: 'same-origin',
             headers: {
                 "X-CSRFToken": getCSRFToken(),
                 "X-Requested-With": "XMLHttpRequest",
@@ -87,6 +89,7 @@ document.getElementById("confirm-form").addEventListener(
 
         fetch(form.action, {
             method: "POST", 
+            credentials: 'same-origin',
             headers: {
                 "X-CSRFToken": getCSRFToken(),
                 "X-Requested-With": "XMLHttpRequest",
@@ -125,6 +128,7 @@ document.addEventListener("submit", (event) => {
 
         fetch(form.action, {
             method: "POST",
+            credentials: 'same-origin',
             headers: {
                 "X-CSRFToken": getCSRFToken(),
                 "X-Requested-With": "XMLHttpRequest",

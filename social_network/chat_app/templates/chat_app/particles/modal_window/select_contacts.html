@@ -14,22 +14,27 @@
 
     <p class="selected-count">Вибрано: 0</p>
     <section>
-        <p class="leter-start">A</p>
         <div class="add-members" id="select-members-list">
-            {% for person in users %}
-            <div class="member">
-                <div class="avatar-member">
-                    <img src="{% static 'chat_app/icons/Jane Cooper.png' %}" alt="{{ person.nickname }}">
-                    <div class="status">
-                        <img src="{% static 'icons/logo/online-status.png' %}" alt="">
+            {% if grouped_users %}
+                {% for letter, members in grouped_users.items %}
+                <div class="letter-group">
+                    <p class="letter-start">{{ letter }}</p>
+                    {% for person in members %}
+                    <div class="member">
+                        <div class="avatar-member">
+                            <img src="{% static 'chat_app/icons/Jane Cooper.png' %}" alt="{{ person.nickname }}">
+                        </div>
+                        <div class="name-member">
+                            <p>{{ person.nickname }}</p>
+                            <input type="checkbox" value="{{ person.id }}" class="group-member-checkbox">
+                        </div>
                     </div>
+                    {% endfor %}
                 </div>
-                <div class="name-member">
-                    <p>{{ person.nickname }}</p>
-                    <input type="checkbox" value="{{ person.id }}" class="group-member-checkbox">
-                </div>
-            </div>
-            {% endfor %}
+                {% endfor %}
+            {% else %}
+                <p class="no-members">Немає доступних учасників</p>
+            {% endif %}
         </div>
     </section>
 

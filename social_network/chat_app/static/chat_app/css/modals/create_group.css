@@ -1,0 +1,205 @@
+.new-group-modal{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    background-color:#FFFFFF;
+    width:30.625rem;
+    height:39.6875rem;
+    padding:1.5rem 2.75rem 2.75rem 2.75rem;
+    gap:1.5rem;
+    border-radius:1.25rem;
+}
+
+.new-group-modal h2{
+    font-size:2.125rem;
+    font-weight: 500;
+}
+
+.new-group-modal .header{
+    display:flex;
+    width:25.125rem;
+    height:fit-content;
+    justify-content:flex-end;
+    align-items:flex-start;
+}
+
+.new-group-modal .close-modal img{
+    cursor: pointer;
+    width:100%;
+    height:100%;
+    object-fit: cover;
+}
+
+.new-group-modal .close-modal:hover{
+     cursor: pointer;
+}
+
+.new-group-modal input{
+    width:25.125rem;
+    height:2.625rem;
+    border-radius:0.625rem;
+}
+
+.new-group-modal div .indicator{
+   display:flex;
+   flex-direction:row;
+   align-items:center;
+   justify-content: center;
+   padding:1.5rem 0;
+}
+
+.new-group-modal button{
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    width: fit-content;
+    flex-direction: row;
+}
+.action-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.75rem;
+}
+.action-buttons button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    padding: 0 1rem;
+    height: 2.5rem;
+    cursor: pointer;
+}
+
+.action-buttons button .cancel {
+    width: 6.375rem;
+}
+.action-buttons button .next {
+    width: 3.8rem;
+}
+
+.photo-buttons{ 
+    display:flex;
+    width:fit-content;
+    height:1.25rem;
+    font-size:1rem;
+    color:#543C52;
+    font-weight:500;
+    gap:1.5rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.photo-buttons button{
+    display:flex;
+    flex-direction:row !important;
+    width:fit-content;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-size:1rem;
+    font-weight:500;
+    color: #543C52;
+    font-family: var(--fontMedium);
+}
+
+.photo-buttons button div{
+    width:1.25rem;
+    height:1.25rem;
+    align-items: center;
+}
+.photo-buttons button div img{
+    width:100%;
+    height:100%;
+    display: block;
+}
+
+.new-group-modal .action-buttons{
+    width:25.125rem;
+    height:fit-content;
+    display:flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: flex-end;
+    gap:1rem;
+}
+
+.new-group-modal .make-a-name{
+    width:25.125rem;
+    height:2.625rem;
+    gap:10px;
+    border-radius: 10px;
+    border:1px solid #CDCED2;
+    padding:10px 16px;
+    font-size:1rem;
+    font-weight:400;
+}
+
+.new-group-modal label{
+    font-family:var(--fontRegular)
+}
+
+.input-block{
+    display:flex;
+    flex-direction:column;
+    width:25.125rem;
+    height:fit-content;
+    gap:6px; 
+}
+
+.new-group-modal .indicator-and-buttons{  
+    display:flex;
+    flex-direction:column;
+    width:25.125rem;
+    height:6rem;
+    align-items:center;
+}
+
+.members{
+    display:flex;
+    flex-direction:column;
+    width:25.125rem;
+    height:12rem;
+    gap:1rem;
+}
+
+.member{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    gap:12px;
+    position:relative;
+}
+.member p{
+    color:#070A1C;
+    font-size:1rem;
+    font-family:var(--fontMedium)
+}
+
+.new-group-modal button:hover {
+    cursor:pointer;
+}
+
+.trash-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  min-height: 36px;
+}
+
+.trash-icon {
+  width: 20px !important;
+  height: 20px !important;
+  display: block;
+}

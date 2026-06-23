@@ -4,23 +4,30 @@
     <div class="chat-block-header">
         <div class="header-left">
             <div class="header-icon-wrapper">
-                <img src="{% static 'icons/logo/chat.svg' %}" alt="">
-                <span class="notification-badge">2</span>
-            </div>    
+                <img src="{% static 'chat_app/icons/chat.svg' %}" alt="">
+                <div class="notification-badge">
+                    <img src="{% static 'icons/logo/red_indicator.svg' %}" alt="">
+                    <span>2</span>
+                </div>
+            </div>       
             <h3>Групові чати</h3>
         </div>
-        <button class="view-all-btn">Дивитись всі</button>
+      
     </div>
 
-    <div class="chats-list">
-        {% for chat in group_chats %} 
-            <button type="button" class="chat-user-button" data-chat-id="{{ chat.id }}" data-chat-name="{{ chat.name|default:'New group' }}">
-                <div class="users-info-block">
-                    <div class="avatar-wrapper">
-                        <img src="{% static 'chat_app/icons/NP.png' %}" alt="{{ chat.name }}">
-                        <span class="status-dot online"></span>
-                    </div>
-                    <div class="message-meta-wrapper">
+   
+<div class="chats-list">
+    {% for chat in group_chats %} 
+        <button type="button" class="chat-user-button" data-chat-id="{{ chat.id }}">
+            <div class="users-info-block">
+                <div class="avatar-wrapper">
+                    {% if chat.avatar %}
+                        <img src="{{ chat.avatar.url }}" alt="">
+                    {% else %}
+                        <img src="{% static 'chat_app/icons/NP.png' %}" alt="">
+                    {% endif %}
+                </div>
+                <div class="message-meta-wrapper">
                         <div class="meta-top">
                             <div class="chat-header-text">
                                 <h4 class="user-name">{{ chat.name|default:'New group' }}</h4>
@@ -31,10 +38,8 @@
                             <p class="user-message">{{ chat.last_message_text|default:'Почніть чат'|truncatechars:28 }}</p>
                         </div>
                     </div>
-                </div>
-            </button>
-        {% empty %}
-            <p class="empty-chats">Порожньо</p>
-        {% endfor %}
-    </div>
+            </div>
+        </button>
+    {% endfor %}
+</div>
 </section>

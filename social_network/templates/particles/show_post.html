@@ -5,17 +5,15 @@
         <div class="user-details-post">
             <div class="avatar-post">
                 <img src="{% static 'icons/avatar.jpg' %}" alt="{{ user.nickname }}">
-                <div class="status-indicator">
-                    <img src="{% static 'icons/logo/online-status.png' %}" alt="">
-                </div>
+                <div class="status-indicator" data-user-id="{{ post.author.id }}"></div>
             </div>
-            <p>{{ user.nickname }}</p>
+            <p>{{ post.author.nickname|default:post.author.username }}</p>
         </div>
         <div class="post-item">
             <div class="post-signature">
                 <img src="{% static 'icons/Interaction Icon.png' %}" alt="">
             </div>
-            <div class="post-actions" id="open-panel">
+            <div class="post-actions">
                 <img src="{% static 'icons/modal/action_post.svg' %}" alt="">
             </div>
         </div>
@@ -47,34 +45,18 @@
             </ul>
         {% endif %}
         <div>
-            {% with post.images.all|length as imgs_count %}
             {% if post.images.all %}
-            <div class="post-images">
+            <div>
                 {% for image in post.images.all %}
-                    <a href="{{ image.original_image.url }}" target="_blank" rel="noopener noreferrer" class="{% if imgs_count == 1 %}img-fix{% elif imgs_count == 2 %}img-big{% elif imgs_count == 3 %}img-small{% else %}img-big{% endif %}">
-                        <img src="{{ image.compressed_image.url }}" alt="{{ post.title }}">
-                    </a>
+                    <p>
+                        <a href="{{ image.original_image.url }}" target="_blank" rel="noopener noreferrer">
+                            <img src="{{ image.compressed_image.url }}" alt="{{ post.title }}">
+                        </a>
+                    </p>
                 {% endfor %} 
             </div>
             {% endif %}
-            {% endwith %}
         </div>
-
-        <div class = "reactions">
-            <button class="reaction like">
-                <img src="{% static 'icons/modal/heart.svg' %}" alt="">
-                <span class="reaction-text">120 Вподобань</span>
-            </button>
-            <button class="reaction thumbs">
-                <img src="{% static 'icons/modal/thumb_up.svg' %}" alt="">
-                <span class="reaction-text">120 Вподобань</span>
-            </button>
-            <button class="reaction views">
-                <img src="{% static 'icons/modal/eye.svg' %}" alt="">
-                <span class="reaction-text">{{ post.views.count }} Переглядів</span>
-            </button>
-        </div>
-
     </div>
 </article>
 {% endfor %}

@@ -7,7 +7,7 @@
     <form action="{% url 'tag_create' %}" method="post" id="tag-form-element" class="modal-content">
         {% csrf_token %}
         <button type="button" class="close-modal-tag">
-            <img src="{% static 'post_app/icons/cross.svg' %}" alt="Закрыть">
+            <img src="{% static 'icons/modal/cross.svg' %}" alt="Закрыть">
         </button>
         
         <h2>Додати хештег</h2>
@@ -18,10 +18,10 @@
 
         <div class="modal-buttons">
             <button type="button" id="cancel-tag">
-                <img src="{% static 'post_app/icons/cancel_btn.svg' %}" alt="Отмена">
+                <img src="{% static 'icons/modal/cancel_btn.svg' %}" alt="Скасувати">
             </button>
             <button type="submit" id="save-tag">
-                <img src="{% static 'post_app/icons/save_btn.svg' %}" alt="Сохранить">
+                <img src="{% static 'icons/modal/save_btn.svg' %}" alt="Зберегти">
             </button>
         </div>
     </form>

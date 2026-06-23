@@ -1,0 +1,515 @@
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 14px 24px;
+    background: #FFFFFF;
+    border-bottom: 1px solid #EAEAEA;
+    flex-shrink: 0;
+}
+
+.chat-header-userinfo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.chat-avatar-wrapper {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: #4A364A;
+    color: #FFFFFF;
+    font-family: var(--fontMedium), sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    user-select: none;
+    overflow: hidden;
+}
+
+
+.chat-header-text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: 3rem;
+    width: fit-content;
+    justify-content: center;
+}
+
+.chat-title {
+    display: flex;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #1A1A1A;
+    font-family: var(--fontMedium);
+    justify-content: center !important;
+}
+
+.chat-status {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #8E8E93;
+}
+
+.chat-date {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #6B7280;
+    font-family: var(--fontRegular);
+}
+
+.chat-main .chat-title {
+    font-family: var(--fontMedium), sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: #070A1C;
+    margin: 0;
+    text-align: left;
+}
+
+.chat-main .chat-status {
+    font-family: var(--fontRegular), sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+    color: #81818D;
+    margin: 0;
+    max-width: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.chat-status-icon {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.chat-status img {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.btn-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    padding: 0;
+    background: none;
+}
+
+.btn-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.btn-secondary {
+    border: 1.5px solid #4E394E;
+    background-color: transparent;
+}
+
+.btn-send {
+    background-color: #4E394E;
+}
+
+.btn-more-actions {
+    background: none;
+    border: none;
+    padding: 6px;
+    margin: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.message-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.message-row.self {
+    justify-content: flex-end;
+}
+
+.message-row.incoming {
+    justify-content: flex-start;
+}
+
+.bubble-avatar {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.chat-bubble {
+    max-width: 68%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    font-family: sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+} 
+/* блок сообщения других людей */
+.chat-bubble.incoming {
+    background-color:#FFFFFF;
+    border: 1px solid #D9D4E6;
+    color: #1A1A1A;
+    box-shadow: 0 0 0 1px rgba(217, 212, 230, 0.12);
+    border-radius:6px !important;
+    gap:10px;
+    padding:10px;
+}
+/* блок сообщения пользователя (я)  */
+.chat-bubble.self {
+    display: flex;
+    background: #D1D5DB;
+    color: #000000;
+    border: none;
+    border-radius:6px !important;
+    padding:10px;
+    gap:10px;
+    background-color: #CDCED2;
+} 
+
+.message-meta-wrapper{
+    display:flex;
+    flex-direction:row;
+}
+
+
+.message-time{ 
+    width:25px !important;
+    height:11px !important;
+}
+
+.avatar-wrapper{
+    width:2.875rem;
+    height:2.875rem;
+}
+
+.user-name{
+    color:#543C52;
+}
+
+.bubble-sender {
+    display: block;
+    font-size: 10px;
+    color: #523A63;
+    font-family: var(--fontRegular) !important;
+    font-weight: 400;
+    margin-bottom: 0.35rem;
+}
+
+.message-text {
+    display: block;
+    white-space: pre-wrap;
+    word-break: break-word;
+    padding-right: 3rem;
+    font-size: 14px;
+    font-family: var(--fontRegular);
+}
+
+
+.status-status-tick {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: #0000ea;
+    clip-path: polygon(14% 44%, 0 58%, 38% 95%, 100% 16%, 86% 2%, 38% 68%);
+}
+
+.message-date-divider {
+    display: block;
+    width: max-content;
+    margin: 1.5rem auto;
+    padding: 4px 6px;
+    border-radius: 6px;
+    background: #E5E4EA;
+    color: #6E6D7A;
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: center;
+    font-family: var(--fontRegular);
+}
+
+.chat-message-block {
+    display:flex;
+    flex-direction:row;
+    width: 100%;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat-message-form{ 
+    position: relative;
+    display:flex;
+    flex-direction:row;
+    width: 33.25rem;
+    height: fit-content;
+    gap:1.5rem;
+}
+
+.chat-message-form button{
+    display:flex;
+    background-color: transparent;
+    border: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius:50%;
+}
+
+.chat-message-form button img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    border-radius:50%;
+}
+
+#chat-input{ 
+    display:flex;
+    width:22.25rem;
+    height:2.625rem;
+    font-family:var(--fontRegular);
+    gap:0.625rem;
+    border-radius:0.625rem;
+    padding:0.625rem 1rem;
+    border:1px #CDCED2 solid;
+    font-size:1rem;
+    color:#81818D;
+} 
+
+
+.chat-window.placeholder-active {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100%;
+    width: 100%;
+    background: #ffffff;
+}
+
+.chat-placeholder-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    max-width: 450px;
+}
+
+.placeholder-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #070A1C;
+    margin: 0 0 1rem 0;
+    line-height: 100%;
+    font-family: var(--fontMedium) !important;
+}
+
+.placeholder-subtitle {
+    font-size: 1rem;
+    color: #070A1C;
+    font-weight: 400;
+    line-height: 100%;
+    margin: 0;
+    font-family:var(--fontRegular) !important;
+}
+
+
+.users, .chats-list, .chat-window {
+    border-radius:10px; 
+    scrollbar-width: thin;
+    scrollbar-color: #543C52 transparent;
+}
+
+.users::-webkit-scrollbar, 
+.chats-list::-webkit-scrollbar, 
+.chat-window::-webkit-scrollbar {
+    width: 6px;
+}
+
+
+.users::-webkit-scrollbar-button, 
+.chats-list::-webkit-scrollbar-button, 
+.chat-window::-webkit-scrollbar-button {
+    display:none;
+}
+
+.users::-webkit-scrollbar-track, 
+.chats-list::-webkit-scrollbar-track, 
+.chat-window::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+}
+
+.users::-webkit-scrollbar-thumb, 
+.chats-list::-webkit-scrollbar-thumb, 
+.chat-window::-webkit-scrollbar-thumb {
+    background-color: #CDCED2;
+    border-radius: 10px;
+    border: transparent;
+}
+
+.chat-window.placeholder-active {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100%;
+    width: 100%;
+    background: #FFFFFF;
+}
+
+
+/* =====================================================
+   ДОПОЛНЕНИЯ К main.css
+   Вставь этот блок в конец твоего main.css
+   ===================================================== */
+
+/* ── Текст + время на одной строке ──────────────────── */
+.bubble-content-row {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+/* Текст растягивается, мета прижата вправо */
+.bubble-content-row .message-text {
+  flex: 1 1 auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 14px;
+  font-family: var(--fontRegular);
+  padding-right: 0;          /* убираем старый отступ */
+  line-height: 1.4;
+}
+
+.bubble-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  flex-shrink: 0;
+  margin-left: auto;
+  align-self: flex-end;
+}
+
+.bubble-time {
+  font-size: 11px;
+  color: #81818D;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* ── Галочка прочтения ──────────────────────────────── */
+.see-indicator {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  opacity: 0.4;           /* серая = не прочитано */
+  transition: opacity 0.2s ease, filter 0.2s ease;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.see-indicator.seen {
+  opacity: 1;
+  filter: none;           /* цветная = прочитано */
+}
+
+/* ── Картинки в пузыре ──────────────────────────────── */
+.bubble-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  max-width: 100%;
+}
+
+.bubble-image {
+  max-width: 200px;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+  cursor: pointer;
+}
+
+/* Одна картинка — чуть больше */
+.bubble-images:has(.bubble-image:only-child) .bubble-image {
+  max-width: 260px;
+  max-height: 260px;
+}
+
+/* ── Бейдж непрочитанных в списке чатов ────────────── */
+.unread-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background: #E53935;
+  color: #fff;
+  font-size: 11px;
+  font-family: var(--fontMedium), sans-serif;
+  font-weight: 600;
+  line-height: 1;
+  margin-left: auto;
+}
+
+/* ── Иконка уведомлений в шапке (notification-badge) ── */
+.notification-badge {
+  display: none;              /* скрыта по умолчанию */
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 9px;
+  background: #E53935;
+  color: #fff;
+  font-size: 10px;
+  font-family: var(--fontMedium), sans-serif;
+  font-weight: 600;
+}
+
+.notification-badge span {
+  line-height: 1;
+}
